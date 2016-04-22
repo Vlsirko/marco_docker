@@ -1,15 +1,11 @@
 server {
     listen 80;
-    server_name 155.0.0.0:8000; #либо ip, либо доменное имя
+    server_name 0.0.0.0:8000; #либо ip, либо доменное имя
     access_log  /var/log/nginx/example.log;
 
     location /static/ {
-        root /static/;
+        root /web/static/;
         expires 30d;
-    }
-
-    location / {
-        root /frontend/app
     }
 
     location /api {

@@ -1,0 +1,5 @@
+mysql_storage/*
+.idea/
+rest/static/img/*
+rest/static/migrations
+__pycache__
