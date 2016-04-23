@@ -23,6 +23,8 @@ from django.conf import settings
 
 router = routers.DefaultRouter()
 router.register(r'products', views.ProductViewSet)
+router.register(r'slider', views.SliderViewSet)
+router.register(r'category', views.CategoryViewSet)
 
 urlpatterns = [
     url(r'^$', front_index.index_view),

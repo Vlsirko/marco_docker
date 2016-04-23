@@ -136,14 +136,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/s/'
 STATIC_ROOT = '/web/static/'
 
 MEDIA_ROOT = '/media/'
-MEDIA_URL = '/media/'
+MEDIA_URL = '/m/'
 
 #REST
 
 REST_FRAMEWORK = {
-    'PAGE_SIZE': 10
+    #'PAGE_SIZE': 10
 }

@@ -1,18 +1,36 @@
 from rest_framework import serializers
-from api.models import Product, Category, Image, SeoBlock
+from api.models.product import Product
+from api.models.category import Category
+from api.models.images import ProductImage, SliderImage
+from api.models.banners import Slider
 
 class CategorySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Category
-        fields = ('id', 'title', 'parent')
-
+        fields = ('id', 'title', 'parent', 'url')
 
 class ImageSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = Image
+        model = ProductImage
         fields = ('image', 'thumb')
+
+
+class SliderImageSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = SliderImage
+        fields = ('image', 'link', 'title')
+
+
+class SliderSerializer(serializers.ModelSerializer):
+    gallery = SliderImageSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Slider
+        fields = ('gallery',)
+
 
 
 class ProductSerializer(serializers.ModelSerializer):
@@ -22,5 +40,5 @@ class ProductSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Product
-        fields = ('id', 'title', 'url', 'category', 'title_image', 'gallery', 'price')
+        fields = ('id', 'title', 'category', 'title_image', 'gallery', 'price')
 
