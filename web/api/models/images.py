@@ -29,6 +29,9 @@ class SliderImage(models.Model):
     image = models.ImageField(upload_to='img/%Y/%m/%d/')
     link = models.CharField(max_length=255, verbose_name='Ссылка')
 
+    def __str__(self):
+        return self.title
+
     class Meta:
         app_label = 'api'
         verbose_name = 'Изображение для Слайдера'

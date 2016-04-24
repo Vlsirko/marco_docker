@@ -12,6 +12,11 @@ class ProductViewSet(viewsets.ModelViewSet):
     serializer_class = ProductSerializer
     http_method_names = ['get']
 
+    def get_queryset(self, request):
+        if 'category' in request.query_params:
+            return Product.objects.all().filter(category__url=request.query_params['category'], enabled=True)
+        return Product.objects.all().filter(enabled=True)
+
 
 class SliderViewSet(viewsets.ModelViewSet):
     queryset = Slider.objects.all().filter(enabled=True)
@@ -24,12 +29,3 @@ class CategoryViewSet(viewsets.ModelViewSet):
     serializer_class = CategorySerializer
     http_method_names = ['get']
 
-    def get_queryset(self):
-        if 'parent' in self.request.query_params:
-
-            if self.request.query_params['parent'] == 'null':
-                return Category.objects.filter(parent__isnull= True, enabled=True)
-
-            return Category.objects.filter(parent=self.request.query_params['parent'], enabled=True)
-
-        return Category.objects.all().filter(enabled=True)
