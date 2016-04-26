@@ -1,4 +1,4 @@
-var app = angular.module('marco', ['ngRoute'])
+var app = angular.module('marco', ['ngRoute', 'ngAnimate'])
 
     .config(['$interpolateProvider', function ($interpolateProvider) {
         $interpolateProvider.startSymbol('{$');
@@ -15,6 +15,6 @@ var app = angular.module('marco', ['ngRoute'])
             templateUrl: '/s/partials/phone-detail.html',
             controller: 'PhoneDetailCtrl'
         }).otherwise({
-            redirectTo: '/'
+            redirectTo: '/#/'
         });
     }]);

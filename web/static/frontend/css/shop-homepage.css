@@ -52,3 +52,15 @@ body {
 footer {
     margin: 50px 0;
 }
+
+/* The starting CSS styles for the enter animation */
+
+.fade.ng-enter{
+    transition: all 0.2s linear;
+    opacity: 0;
+}
+
+.fade{
+    opacity: 1;
+}
+

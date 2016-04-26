@@ -10,9 +10,9 @@ app.controller('ProductsListingController', function($scope, $http){
 
 app.controller('CatalogController', function($scope, $http, $routeParams){
     var category = $routeParams.category_alias;
-    $http.get('/api/products/?category=' + category).success(function(data) {
+    $http.get('/api/products/?category__url=' + category).success(function(data) {
         $scope.products = data;
-
+        console.log(data)
     });
 
 

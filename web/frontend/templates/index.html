@@ -34,7 +34,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">MirrorStore</a>
+            <a class="navbar-brand" href="/#/">MirrorStore</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -68,14 +68,14 @@
                 <div class="panel-heading">{$cat.title$}</div>
 
                 <ul class="list-group">
-                    <a ng-repeat="child in cat.childrens" href="#" class="list-group-item">{$child.title$}</a>
+                    <a ng-repeat="child in cat.childrens" href="#/catalog/{$child.url$}" class="list-group-item">{$child.title$}</a>
                 </ul>
 
             </div>
 
         </div>
 
-        <div class="col-md-9" ng-view>
+        <div class="col-md-9 fade" ng-view>
 
 
 
@@ -109,6 +109,7 @@
 <script src="{% static 'frontend/js/bootstrap.min.js' %}"></script>
 <script src="{% static 'frontend/js/angular.min.js' %}"></script>
 <script src="{% static 'frontend/js/angular-route.min.js' %}"></script>
+<script src="{% static 'frontend/js/angular.animate.js' %}"></script>
 <script src="{% static 'frontend/js/app.js' %}"></script>
 <script src="{% static 'frontend/js/controllers.js' %}"></script>
 
