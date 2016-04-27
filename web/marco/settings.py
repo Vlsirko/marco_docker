@@ -47,8 +47,7 @@ INSTALLED_APPS = [
     'api.apps.RestConfig',
     'mptt',
     'django_mptt_admin',
-    'rest_framework',
-    'frontend.apps.FrontendConfig'
+    'rest_framework'
 ]
 
 MIDDLEWARE_CLASSES = [

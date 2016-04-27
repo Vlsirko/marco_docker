@@ -17,7 +17,6 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from rest_framework import routers
 from api import views
-from frontend import views as front_index
 from django.conf.urls.static import static
 from django.conf import settings
 
@@ -27,7 +26,6 @@ router.register(r'slider', views.SliderViewSet)
 router.register(r'category', views.CategoryViewSet)
 
 urlpatterns = [
-    url(r'^$', front_index.index_view),
     url(r'^admin/', admin.site.urls),
     url(r'^api/', include(router.urls)),
     url(r'^api/',  include('rest_framework.urls', namespace='rest_framework'))
