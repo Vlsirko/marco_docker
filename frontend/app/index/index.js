@@ -1,10 +1,10 @@
 'use strict';
 
-angular.module('myApp.view1', ['ngRoute'])
+angular.module('marco.index', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/view1', {
-    templateUrl: 'view1/view1.html',
+  $routeProvider.when('/index', {
+    templateUrl: 'index/index.html',
     controller: 'View1Ctrl'
   });
 }])
