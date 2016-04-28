@@ -19,6 +19,10 @@ server {
         alias /web/static;
     }
 
+     location /m {
+            alias /media;
+        }
+
     location ~/(admin|api) {
         uwsgi_pass  django;
         include     /web/marco/uwsgi_params;

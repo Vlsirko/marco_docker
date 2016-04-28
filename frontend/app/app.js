@@ -7,5 +7,5 @@ angular.module('marco', [
   'marco.catalog',
 ]).
 config(['$routeProvider', function($routeProvider) {
-  $routeProvider.otherwise({redirectTo: '/index'});
+  $routeProvider.otherwise({redirectTo: '/'});
 }]);
