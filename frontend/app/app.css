@@ -6,3 +6,18 @@
 .fade{
   opacity: 1;
 }
+
+.product-card{
+  position:relative;
+}
+
+.product-card .status-block{
+  position: absolute;
+  top:7px;
+  right:7px;
+}
+
+.status-block span{
+  display: block;
+  margin-bottom: 2px;
+}
