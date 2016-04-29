@@ -1,10 +1,8 @@
-
-.sidebar{
-  outline:1px solid blue;
-  height: 600px;
+.fade.ng-enter{
+  transition: all 0.2s linear;
+  opacity: 0;
 }
 
-.product-icon{
-  outline:1px solid red;
-  height: 300px;
+.fade{
+  opacity: 1;
 }

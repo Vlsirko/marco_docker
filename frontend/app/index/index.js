@@ -17,10 +17,9 @@ angular.module('marco.index', ['ngRoute'])
     $scope.images =  data.gallery;
   });
 
-  var category = $routeParams.category_alias;
-  $http.get('/api/products/?category__url=' + category).success(function(data) {
+}).controller('NewProductsCtrl', function($scope, $http){
+  $http.get('/api/products/').success(function(data) {
     $scope.products = data;
-    console.log(data)
   });
   
-})
+});
