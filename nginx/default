@@ -19,12 +19,28 @@ server {
         alias /web/static;
     }
 
-     location /m {
-            alias /media;
-        }
-
     location ~/(admin|api) {
         uwsgi_pass  django;
         include     /web/marco/uwsgi_params;
+    }
+}
+
+server {
+    server_name i.marco.dev;
+    root /media;
+
+    if ($uri ~ ^/(\d+|-)/(\d+|-)/) {
+        set $h $1;
+        set $w $2;
+    }
+
+    location / {
+
+    }
+
+    location ~ ^/(?:\d+|-)/(?:\d+|-)/.*\.(?:jpg|gif|png)$ {
+        rewrite ^/[0-9\-]+/[0-9\-]+/(.*)$ /$1;
+        image_filter resize $w $h;
+        break;
     }
 }

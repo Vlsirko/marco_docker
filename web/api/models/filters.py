@@ -5,4 +5,4 @@ from .product import Product
 class ProductFilter(filters.FilterSet):
     class Meta:
         model = Product
-        fields = ['category__url']
+        fields = ['category__url', 'is_new', 'is_sale']

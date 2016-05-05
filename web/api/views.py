@@ -6,15 +6,17 @@ from api.models.category import Category
 from api.models.filters import ProductFilter
 from rest_framework import viewsets
 from rest_framework import filters
-
+from api.models.pagination import ProductListPagination
 
 # Create your views here.
 class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all().filter(enabled=True)
     serializer_class = ProductSerializer
+    pagination_class = ProductListPagination
     http_method_names = ['get']
-    filter_backends = (filters.DjangoFilterBackend,)
+    filter_backends = (filters.DjangoFilterBackend, filters.OrderingFilter)
     filter_class = ProductFilter
+    ordering_fields = ('time_add',)
 
 
 class SliderViewSet(viewsets.ModelViewSet):

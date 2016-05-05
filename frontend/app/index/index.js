@@ -18,8 +18,16 @@ angular.module('marco.index', ['ngRoute'])
   });
 
 }).controller('NewProductsCtrl', function($scope, $http){
-  $http.get('/api/products/').success(function(data) {
-    $scope.products = data;
+  $scope.products = false;
+  $http.get('/api/products/?page_size=6&is_new=True&ordering=-time_add').success(function(data) {
+    $scope.products = data.results;
+
   });
   
+}).controller('SaleProductsCtrl', function($scope, $http){
+  $scope.products = false;
+  $http.get('/api/products/?page_size=6&is_sale=True&ordering=-time_add').success(function(data) {
+    $scope.products = data.results;
+  });
+
 });

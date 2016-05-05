@@ -7,12 +7,12 @@
 
         <div ng-repeat="product in products" class="col-sm-4 col-lg-4 col-md-4">
           <div class="thumbnail product-card">
-            <img ng-src="{{product.title_image.image}}" alt="">
+            <img ng-src="{{product.title_image.thumb}}" alt="">
 
             <div class="status-block">
-              <span class="label label-success">Новинка</span>
-              <span class="label label-danger">Акция</span>
-              <span class="label label-warning">Под заказ</span>
+              <span ng-if="product.is_new" class="label label-success">Новинка</span>
+              <span ng-if="product.is_sale" class="label label-danger">Акция</span>
+              <span ng-if="product.is_preorder" class="label label-warning">Под заказ</span>
             </div>
 
             <div class="caption">

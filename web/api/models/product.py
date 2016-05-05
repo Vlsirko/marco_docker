@@ -17,6 +17,11 @@ class Product(models.Model):
     enabled = models.BooleanField(verbose_name='Активный')
     seo_block = models.ForeignKey(SeoBlock, related_name='seo', on_delete=models.SET_NULL,
                                   null=True, verbose_name='Сео блок')
+    time_add = models.DateTimeField(auto_now_add=True, verbose_name='Дата добавления', editable=False, blank=True)
+
+    is_new = models.BooleanField(verbose_name='Новинка')
+    is_sale = models.BooleanField(verbose_name='Акция')
+    is_preorder = models.BooleanField(verbose_name='Предзаказ')
 
     def __str__(self):
         return self.title

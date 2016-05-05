@@ -11,8 +11,9 @@ angular.module('marco.catalog', ['ngRoute', 'ngRoute'])
 
 .controller('catalogCtrl', function($scope, $http, $routeParams) {
   var category = $routeParams.category_alias;
-  $http.get('/api/products/?category__url=' + category).success(function(data) {
-    $scope.products = data;
-    console.log(data)
+  var page = $routeParams.page;
+  var pageString = page ? '&page=' . page : '';
+  $http.get('/api/products/?category__url=' + category + pageString).success(function(data) {
+    $scope.products = data.results;
   });
 });

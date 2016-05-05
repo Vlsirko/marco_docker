@@ -14,13 +14,13 @@ class CategorySerializer(serializers.ModelSerializer):
 class ImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProductImage
-        fields = ('image', 'thumb')
+        fields = ('path', 'thumb')
 
 
 class SliderImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = SliderImage
-        fields = ('image', 'link', 'title')
+        fields = ('path', 'link', 'title')
 
 
 class SliderSerializer(serializers.ModelSerializer):
@@ -38,4 +38,4 @@ class ProductSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Product
-        fields = ('id', 'title', 'category', 'title_image', 'gallery', 'price')
+        fields = ('id', 'title', 'category', 'title_image', 'gallery', 'price', 'is_new', 'is_sale', 'is_preorder')

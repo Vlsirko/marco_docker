@@ -11,7 +11,7 @@
                     </ol>
                     <div class="carousel-inner">
                         <div ng-repeat="(index, image) in images" ng-class="index==0? 'item active' : 'item'">
-                            <img class="slide-image" ng-src="{{image.image}}" alt="{{image.title}}">
+                            <img class="slide-image" ng-src="{{image.path}}" alt="{{image.title}}">
                         </div>
                     </div>
                     <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
@@ -34,8 +34,45 @@
             <div class="row">
 
                 <div ng-repeat="product in products" class="col-sm-4 col-lg-4 col-md-4">
-                    <div class="thumbnail">
-                        <img width='320' height='150' ng-src="{{product.title_image.image}}" alt="">
+                    <div class="thumbnail product-card">
+                        <img ng-src="{{product.title_image.thumb}}" alt="">
+
+                        <div class="status-block">
+                            <span ng-if="product.is_new" class="label label-success">Новинка</span>
+                            <span ng-if="product.is_sale" class="label label-danger">Акция</span>
+                            <span ng-if="product.is_preorder" class="label label-warning">Под заказ</span>
+                        </div>
+
+                        <div class="caption">
+                            <h4 class="pull-right">{{product.price}} грн</h4>
+                            <h4>{{product.title}}</h4>
+                        </div>
+                        <div class="text-right">
+                            <a href="#" class="btn btn-primary btn-sm" role="button">В корзину</a>
+                            <a href="#" class="btn btn-default btn-sm" role="button">Подробнее</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <p class="lead">Акционные товары</p>
+        <div ng-controller="SaleProductsCtrl">
+            <div class="row">
+
+                <div ng-repeat="product in products" class="col-sm-4 col-lg-4 col-md-4">
+                    <div class="thumbnail product-card">
+                        <img ng-src="{{product.title_image.thumb}}" alt="">
+
+                        <div class="status-block">
+                            <span ng-if="product.is_new" class="label label-success">Новинка</span>
+                            <span ng-if="product.is_sale" class="label label-danger">Акция</span>
+                            <span ng-if="product.is_preorder" class="label label-warning">Под заказ</span>
+                        </div>
+
                         <div class="caption">
                             <h4 class="pull-right">{{product.price}} грн</h4>
                             <h4>{{product.title}}</h4>

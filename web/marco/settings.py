@@ -17,7 +17,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
@@ -33,7 +32,6 @@ DEFAULT_CHARSET = 'utf8'
 
 ADMIN_LANGUAGE_CODE = 'ru-RU'
 USE_I18N = True
-
 
 # Application definition
 
@@ -82,7 +80,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'marco.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
@@ -97,7 +94,6 @@ DATABASES = {
         'OPTIONS': {'charset': 'utf8mb4'}
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
@@ -117,7 +113,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
@@ -131,7 +126,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
@@ -141,8 +135,25 @@ STATIC_ROOT = '/web/static/'
 MEDIA_ROOT = '/media/'
 MEDIA_URL = '/m/'
 
-#REST
+# REST
 
 REST_FRAMEWORK = {
-    #'PAGE_SIZE': 10
+    # 'PAGE_SIZE': 10
+}
+
+IMAGE_SETTINGS = {
+    'server_host': 'http://i.marco.dev',
+    'product': {
+        'thumb': {
+            'height': 320,
+            'width': 480
+        },
+
+        'height': 800,
+        'width': 600
+    },
+    'slider': {
+        'height': 300,
+        'width': 800
+    }
 }
