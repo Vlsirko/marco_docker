@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="app.css">
 </head>
 
-<body>
+<body ng-controller="MainCtrl">
 <div class="container">
 
     <!--[if lt IE 7]>
@@ -40,10 +40,10 @@
         <!--Логотип-->
         <div class="col-md-3">
             <a href='/#/'>
-                <img id='logo' class='img-responsive' src='static/site/logo.png' alt='logo'>
+                <img id='logo' class='img-responsive' src='components/static/site/logo.png' alt='logo'>
             </a>
 
-            <div class="marco-sidebar-menu marco-margin-top" ng-controller="CategoryTreeCtrl">
+            <div class="marco-sidebar-menu marco-margin-top">
 
                 <ul ng-if="categories">
                     <!--Категоря одежда-->
@@ -82,18 +82,18 @@
         <div class="col-md-4">
             <div class="col-md-12">
                 <span class="h4">Способы оплаты</span><br>
-                <a href=''><img src='static/site/privat24.png' width='75' height='50'></a>
-                <a href=''><img src='static/site/webmoney.png' width='75' height='50'></a>
-                <a href=''><img src='static/site/paypal-credit-cards.jpg' width='75' height='50'></a>
-                <img src='static/site/cash2.png' width='50' height='50'>
+                <a href=''><img src='components/static/site/privat24.png' width='75' height='50'></a>
+                <a href=''><img src='components/static/site/webmoney.png' width='75' height='50'></a>
+                <a href=''><img src='components/static/site/paypal-credit-cards.jpg' width='75' height='50'></a>
+                <img src='components/static/site/cash2.png' width='50' height='50'>
             </div>
 
             <div class="col-md-12">
                 <span class="h4">Способы доставки</span><br>
-                <a href=''><img src='static/site/nova_poshta.gif' width='75' height='50'></a>
-                <a href=''><img src='static/site/intime.jpg' width='75' height='50'></a>
-                <a href=''><img src='static/site/ukrposhta-logo.gif' width='75' height='50'></a>
-                <img src='static/site/courier.png' width='50' height='50'>
+                <a href=''><img src='components/static/site/nova_poshta.gif' width='75' height='50'></a>
+                <a href=''><img src='components/static/site/intime.jpg' width='75' height='50'></a>
+                <a href=''><img src='components/static/site/ukrposhta-logo.gif' width='75' height='50'></a>
+                <img src='components/static/site/courier.png' width='50' height='50'>
             </div>
 
             <!--div class="col-md-12">
@@ -119,9 +119,11 @@
 <script src="bower_components/angular-route/angular-route.min.js"></script>
 <script src="bower_components/angular-animate/angular-animate.min.js"></script>
 <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+<script src="bower_components/angular-resource/angular-resource.min.js"></script>
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="bower_components/responsive-slider/responsiveslides.min.js"></script>
+<script src="components/services.js"></script>
 <script src="app.js"></script>
 <script src="index/index.js"></script>
 <script src="catalog/catalog.js"></script>

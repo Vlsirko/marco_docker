@@ -1,4 +1,5 @@
-<div id='slider' ng-controller="SliderCtrl">
+<div>
+<div id='slider'>
     <div class="rslides_container" ng-if="slides.length > 0">
         <ul class="rslides" id="slider1">
             <li rs-slider ng-repeat="image in slides">
@@ -8,24 +9,24 @@
     </div>
 </div>
 
-<div id='newProducts' ng-controller="NewProductsCtrl">
+<div id='newProducts'>
     <div ng-if="products.length > 0">
         <span class="h1 marco-h1">Новинки на сайте:</span>
 
         <!--Иконка товара-->
         <div class="row">
-            <div ng-include="'../product.html'" ng-repeat="product in products"></div>
+            <div ng-include="'/catalog/product.html'" ng-repeat="product in products"></div>
         </div>
     </div>
 </div>
 
-<div ng-controller="SaleProductsCtrl">
-    <div ng-if="products.length > 0" id='sale-products' class="yellow-block">
+<div>
+    <div ng-if="productsSale.length > 0" id='sale-products' class="yellow-block">
         <span class="h1 marco-h1">Акционные товары:</span>
 
         <!--Иконка товара-->
         <div class="row">
-            <div ng-include="'../product.html'" ng-repeat="product in products"></div>
+            <div ng-include="'/catalog/product.html'" ng-repeat="product in productsSale"></div>
         </div>
     </div>
 </div>
@@ -53,4 +54,5 @@
     условий активизации. Таким образом сложившаяся структура организации играет важную роль в формировании систем
     массового участия. Задача организации, в особенности же дальнейшее развитие различных форм деятельности влечет за
     собой процесс внедрения и модернизации направлений прогрессивного развития.
+</div>
 </div>

@@ -4,33 +4,25 @@ angular.module('MirrorStore.index', ['ngRoute'])
 
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/', {
-            templateUrl: 'index/index.html'
+            templateUrl: 'index/index.html',
+            controller: 'indexCtrl'
         });
     }])
 
-    .controller('SliderCtrl', function ($scope, $http) {
-        $http.get('/api/slider/1/').success(function (data) {
-            $scope.slides = data.slides;
+    .controller('indexCtrl', function ($scope, Slider, Product) {
+
+        Slider.get({id: 1}, function(slider){
+            $scope.slides = slider.slides;
         });
 
-    })
-
-    .controller('NewProductsCtrl', function ($scope, $http) {
-        $scope.products = false;
-        $http.get('/api/products/?page_size=6&is_new=True&ordering=-time_add').success(function (data) {
-            $scope.products = data.results;
-
+        Product.getNew(function(products){
+            $scope.products = products.results;
         });
 
-    })
-
-    .controller('SaleProductsCtrl', function ($scope, $http) {
-        $scope.products = false;
-        $http.get('/api/products/?page_size=6&is_sale=True&ordering=-time_add').success(function (data) {
-            $scope.products = data.results;
+        Product.getSale(function(products){
+            $scope.productsSale = products.results;
         });
     })
-
     .directive('rsSlider', [function () {
         return {
             'link': function (scope, elem, attrs) {
