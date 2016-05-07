@@ -30,7 +30,7 @@
     <!--div class="row">
         <div class="col-md-10 col-md-offset-2">
             <a href="#" class="centred">
-                <img class="img-responsive" src="../images/banners/frontalBanner.png" alt="main-banner">
+                <img class="img-responsive" src="../static/banners/frontalBanner.png" alt="main-banner">
             </a>
         </div>
     </div-->
@@ -40,49 +40,26 @@
         <!--Логотип-->
         <div class="col-md-3">
             <a href='/#/'>
-                <img id='logo' class='img-responsive' src='../images/site/logo.png' alt='logo'>
+                <img id='logo' class='img-responsive' src='static/site/logo.png' alt='logo'>
             </a>
 
-            <div class="marco-sidebar-menu marco-margin-top">
-                <ul>
+            <div class="marco-sidebar-menu marco-margin-top" ng-controller="CategoryTreeCtrl">
+                <ul ng-if="categories">
                     <!--Категоря одежда-->
-                    <li>
-                        <span class="title-menu">Одежда</span>
+                    <li ng-repeat="cat in categories">
+                        <span class="title-menu">{{cat.title}}</span>
                         <!--Подкатегории-->
                         <ul>
-                            <li><a href=''>SD</a></li>
-                            <li><a href=''>MSD</a></li>
-                            <li><a href=''>TINY</a></li>
+                            <li ng-repeat="childCat in cat.childrens">
+                                <a href='#/{{childCat.url}}'>{{childCat.title}}</a>
+                            </li>
                         </ul>
                     </li>
-
-                    <!--Категоря одежда-->
-                    <li>
-                        <span class="title-menu">Одежда</span>
-                        <!--Подкатегории-->
-                        <ul>
-                            <li><a href=''>SD</a></li>
-                            <li><a href=''>MSD</a></li>
-                            <li><a href=''>TINY</a></li>
-                        </ul>
-                    </li>
-
-                    <!--Категоря одежда-->
-                    <li>
-                        <span class="title-menu">Одежда</span>
-                        <!--Подкатегории-->
-                        <ul>
-                            <li><a href=''>SD</a></li>
-                            <li><a href=''>MSD</a></li>
-                            <li><a href=''>TINY</a></li>
-                        </ul>
-                    </li>
-
                 </ul>
             </div>
         </div>
 
-        <div class="col-md-9" ng-view></div>
+        <div class="col-md-9 fade" ng-view></div>
     </div>
 
 
@@ -90,87 +67,39 @@
 
 <!--сабфутер-->
 <div id='subfooter'>
-    <div class="container">
+    <div class="container" ng-controller="CategoryTreeCtrl">
         <div class="col-md-8">
-
-            <div class="col-md-3">
+            <div class="col-md-4" ng-repeat="cat in categories">
                 <ul>
-                    Куклы
-                    <li><a href=''>SD</a></li>
-                    <li><a href=''>MSD</a></li>
-                    <li><a href=''>TINY</a></li>
+                    {{cat.title}}
+                    <li ng-repeat="child in cat.childrens"><a href='#/{{cat.url}}'>{{cat.title}}</a></li>
+
                 </ul>
             </div>
-
-            <div class="col-md-3">
-                <ul>
-                    Куклы
-                    <li><a href=''>SD</a></li>
-                    <li><a href=''>MSD</a></li>
-                    <li><a href=''>TINY</a></li>
-                </ul>
-            </div>
-
-            <div class="col-md-3">
-                <ul>
-                    Куклы
-                    <li><a href=''>SD</a></li>
-                    <li><a href=''>MSD</a></li>
-                    <li><a href=''>TINY</a></li>
-                </ul>
-            </div>
-
-            <div class="col-md-3">
-                <ul>
-                    Куклы
-                    <li><a href=''>SD</a></li>
-                    <li><a href=''>MSD</a></li>
-                    <li><a href=''>TINY</a></li>
-                </ul>
-            </div>
-
-            <div class="col-md-3">
-                <ul>
-                    Куклы
-                    <li><a href=''>SD</a></li>
-                    <li><a href=''>MSD</a></li>
-                    <li><a href=''>TINY</a></li>
-                </ul>
-            </div>
-
-            <div class="col-md-3">
-                <ul>
-                    Куклы
-                    <li><a href=''>SD</a></li>
-                    <li><a href=''>MSD</a></li>
-                    <li><a href=''>TINY</a></li>
-                </ul>
-            </div>
-
         </div>
 
         <div class="col-md-4">
             <div class="col-md-12">
                 <span class="h4">Способы оплаты</span><br>
-                <a href=''><img src='../images/site/privat24.png' width='75' height='50'></a>
-                <a href=''><img src='../images/site/webmoney.png' width='75' height='50'></a>
-                <a href=''><img src='../images/site/paypal-credit-cards.jpg' width='75' height='50'></a>
-                <img src='../images/site/cash2.png' width='50' height='50'>
+                <a href=''><img src='static/site/privat24.png' width='75' height='50'></a>
+                <a href=''><img src='static/site/webmoney.png' width='75' height='50'></a>
+                <a href=''><img src='static/site/paypal-credit-cards.jpg' width='75' height='50'></a>
+                <img src='static/site/cash2.png' width='50' height='50'>
             </div>
 
             <div class="col-md-12">
                 <span class="h4">Способы доставки</span><br>
-                <a href=''><img src='../images/site/nova_poshta.gif' width='75' height='50'></a>
-                <a href=''><img src='../images/site/intime.jpg' width='75' height='50'></a>
-                <a href=''><img src='../images/site/ukrposhta-logo.gif' width='75' height='50'></a>
-                <img src='../images/site/courier.png' width='50' height='50'>
+                <a href=''><img src='static/site/nova_poshta.gif' width='75' height='50'></a>
+                <a href=''><img src='static/site/intime.jpg' width='75' height='50'></a>
+                <a href=''><img src='static/site/ukrposhta-logo.gif' width='75' height='50'></a>
+                <img src='static/site/courier.png' width='50' height='50'>
             </div>
 
             <!--div class="col-md-12">
                 <span class="h4">Мы в интернете</span><br>
-                <a href=''><img src='../images/site/vk.jpg' width='25' height='25'></a>
-                <a href=''><img src='../images/site/fb.png' width='25' height='25'></a>
-                <a href=''><img src='../images/site/youtube.png' width='25' height='25'></a>
+                <a href=''><img src='../static/site/vk.jpg' width='25' height='25'></a>
+                <a href=''><img src='../static/site/fb.png' width='25' height='25'></a>
+                <a href=''><img src='../static/site/youtube.png' width='25' height='25'></a>
             </div-->
 
         </div>
@@ -187,11 +116,12 @@
 -->
 <script src="bower_components/angular/angular.js"></script>
 <script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/angular-animate/angular-animate.min.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="bower_components/responsive-slider/responsiveslides.min.js"></script>
 <script src="app.js"></script>
-<script src="../js/main.js"></script>
 <script src="index/index.js"></script>
 <script src="catalog/catalog.js"></script>
 <script src="card/card.js"></script>

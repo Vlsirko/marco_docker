@@ -9,8 +9,14 @@ angular.module('MirrorStore.catalog', ['ngRoute'])
         });
     }])
 
-    .controller('catalogCtrl', [function() {
-
-    }]);
+    .controller('catalogCtrl', function($scope, $http, $routeParams) {
+        var category = $routeParams.category;
+        var page = $routeParams.page;
+        var pageString = page ? '&page=' . page : '';
+        $http.get('/api/products/?category__url=' + category + pageString).success(function(data) {
+            $scope.products = data.results;
+            console.log( data.results)
+        });
+    });
 
 

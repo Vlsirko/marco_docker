@@ -17,6 +17,7 @@ class ProductViewSet(viewsets.ModelViewSet):
     filter_backends = (filters.DjangoFilterBackend, filters.OrderingFilter)
     filter_class = ProductFilter
     ordering_fields = ('time_add',)
+    lookup_field = 'url'
 
 
 class SliderViewSet(viewsets.ModelViewSet):

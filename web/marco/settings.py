@@ -130,7 +130,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/s/'
-STATIC_ROOT = '/web/static/'
+STATIC_ROOT = '/static/'
 
 MEDIA_ROOT = '/media/'
 MEDIA_URL = '/m/'
@@ -146,14 +146,21 @@ IMAGE_SETTINGS = {
     'product': {
         'thumb': {
             'height': 320,
-            'width': 480
+            'width': 240
         },
-
-        'height': 800,
-        'width': 600
+        'image': {
+            'height': 640,
+            'width': 480
+        }
     },
     'slider': {
-        'height': 300,
+        'height': 400,
         'width': 800
+    },
+    'sale': {
+        'thumb': {
+            'height': 64,
+            'width': 64
+        }
     }
 }

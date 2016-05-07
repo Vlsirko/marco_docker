@@ -1,8 +1,8 @@
 from rest_framework import serializers
 from api.models.product import Product
 from api.models.category import Category
-from api.models.images import ProductImage, SliderImage
 from api.models.banners import Slider
+from api.models.sale import Sale
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -10,32 +10,33 @@ class CategorySerializer(serializers.ModelSerializer):
         model = Category
         fields = ('id', 'title', 'parent', 'url')
 
-
-class ImageSerializer(serializers.ModelSerializer):
+class SaleSerializer(serializers.ModelSerializer):
     class Meta:
-        model = ProductImage
-        fields = ('path', 'thumb')
-
-
-class SliderImageSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = SliderImage
-        fields = ('path', 'link', 'title')
-
+        model = Sale
+        fields = ('title', 'description', 'image')
 
 class SliderSerializer(serializers.ModelSerializer):
-    gallery = SliderImageSerializer(many=True, read_only=True)
 
     class Meta:
         model = Slider
-        fields = ('gallery',)
+        fields = ('slides',)
 
 
 class ProductSerializer(serializers.ModelSerializer):
     category = CategorySerializer(many=False, read_only=True)
-    title_image = ImageSerializer(many=False, read_only=True)
-    gallery = ImageSerializer(many=True, read_only=True)
+    sales = SaleSerializer(many=True, read_only=True)
+    lookup_field = 'url'
 
     class Meta:
         model = Product
-        fields = ('id', 'title', 'category', 'title_image', 'gallery', 'price', 'is_new', 'is_sale', 'is_preorder')
+        fields = ('title',
+                  'category',
+                  'title_image',
+                  'gallery',
+                  'price',
+                  'description',
+                  'url',
+                  'is_new',
+                  'is_sale',
+                  'is_preorder',
+                  'sales')

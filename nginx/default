@@ -10,13 +10,13 @@ server {
     root /frontend/app;
     charset utf-8;
 
-    location = / {
+    location / {
         include /etc/nginx/mime.types;
         try_files $uri /index.html?$query_string;
     }
 
-    location /s {
-        alias /web/static;
+    location /s/ {
+        alias /static;
     }
 
     location ~/(admin|api) {
@@ -40,7 +40,7 @@ server {
 
     location ~ ^/(?:\d+|-)/(?:\d+|-)/.*\.(?:jpg|gif|png)$ {
         rewrite ^/[0-9\-]+/[0-9\-]+/(.*)$ /$1;
-        image_filter resize $w $h;
+        image_filter crop $w $h;
         break;
     }
 }

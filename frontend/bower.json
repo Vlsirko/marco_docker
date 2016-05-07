@@ -9,6 +9,8 @@
     "angular": "~1.4.0",
     "angular-route": "~1.4.0",
     "angular-loader": "~1.4.0",
+    "angular-animate" : "~1.4.0",
+    "angular-sanitize" : "*",
     "bootstrap" : "~3",
     "bootstrap-theme-cosmo" : "*",
     "responsive-slider" : "https://github.com/viljamis/ResponsiveSlides.js.git"

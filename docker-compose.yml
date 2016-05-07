@@ -6,6 +6,7 @@ services:
     volumes:
       - ./web:/web
       - ./media:/media
+      - ./static:/static
     ports:
       - "8000:8000"
     depends_on:
