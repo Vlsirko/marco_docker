@@ -38,3 +38,7 @@ angular.module('MirrorStore').controller('CategoryTreeCtrl', function($scope, $h
 
 });
 
+
+angular.element(document).ready(function () {
+    
+})

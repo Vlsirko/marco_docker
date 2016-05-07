@@ -18,8 +18,8 @@
     <link rel="stylesheet" href="bower_components/responsive-slider/responsiveslides.css">
     <link rel="stylesheet" href="app.css">
 </head>
-<body>
 
+<body>
 <div class="container">
 
     <!--[if lt IE 7]>
@@ -44,6 +44,7 @@
             </a>
 
             <div class="marco-sidebar-menu marco-margin-top" ng-controller="CategoryTreeCtrl">
+
                 <ul ng-if="categories">
                     <!--Категоря одежда-->
                     <li ng-repeat="cat in categories">
@@ -67,12 +68,12 @@
 
 <!--сабфутер-->
 <div id='subfooter'>
-    <div class="container" ng-controller="CategoryTreeCtrl">
+    <div class="container">
         <div class="col-md-8">
             <div class="col-md-4" ng-repeat="cat in categories">
                 <ul>
                     {{cat.title}}
-                    <li ng-repeat="child in cat.childrens"><a href='#/{{cat.url}}'>{{cat.title}}</a></li>
+                    <li ng-repeat="child in cat.childrens"><a href='#/{{cat.url}}'>{{child.title}}</a></li>
 
                 </ul>
             </div>
@@ -114,8 +115,8 @@
 <!-- In production use:
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
 -->
-<script src="bower_components/angular/angular.js"></script>
-<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/angular-route/angular-route.min.js"></script>
 <script src="bower_components/angular-animate/angular-animate.min.js"></script>
 <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
@@ -126,4 +127,5 @@
 <script src="catalog/catalog.js"></script>
 <script src="card/card.js"></script>
 </body>
+
 </html>

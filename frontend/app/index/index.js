@@ -9,7 +9,7 @@ angular.module('MirrorStore.index', ['ngRoute'])
     }])
 
     .controller('SliderCtrl', function ($scope, $http) {
-        $http.get('/api/slider/1').success(function (data) {
+        $http.get('/api/slider/1/').success(function (data) {
             $scope.slides = data.slides;
         });
 
