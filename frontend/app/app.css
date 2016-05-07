@@ -1,23 +1,399 @@
+*{
+    font-size: 12px;
+}
+
+.row{
+    margin-top: 1em;
+}
+
+a.grey{
+    color: #636363;
+    text-decoration: none;
+}
+
+#headerPhone{
+    font-family: Calibri;
+    font-size: 2.7em;
+    color: #c1c1c1;
+    font-weight: bold;
+}
+
+.marco-contacts span{
+    font-size: 0.8em;
+}
+
+#searchInput{
+    width:100%;
+}
+
+.no-padding{
+    padding:0 !important;
+}
+.marco-margin-top{
+    margin-top: 0.5em;
+}
+
+.marco-sidebar-menu{
+    font-size: 0.9em;
+}
+
+.marco-sidebar-menu ul{
+    padding:0;
+    list-style: none;
+}
+
+.marco-sidebar-menu .title-menu{
+    background: #fcf357;
+    display: block;
+    padding: 0.5em;
+    font-weight: bold;
+}
+
+.marco-sidebar-menu li a{
+    display: block;
+    color: #6e6e6e;
+    padding: 12px 38px 12px 25px;
+    text-decoration: none;
+}
+
+.marco-sidebar-menu li a:hover{
+    background-color: #dedede;
+}
+
+/*! http://responsiveslides.com v1.54 by @viljamis */
+
+.rslides {
+    position: relative;
+    list-style: none;
+    overflow: hidden;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    z-index:-5;
+}
+
+.rslides li {
+    -webkit-backface-visibility: hidden;
+    position: absolute;
+    display: none;
+    width: 100%;
+    left: 0;
+    top: 0;
+}
+
+.rslides li:first-child {
+    position: relative;
+    display: block;
+    float: left;
+}
+
+.rslides img {
+    display: block;
+    float: left;
+    border: 0;
+    width:100%;
+}
+
+
+.rslides_container {
+    position: relative;
+    float: left;
+    width:100%;
+}
+
+.centered-btns_nav {
+    z-index: 3;
+    position: absolute;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    top: 50%;
+    *left: 0;
+    opacity: 0.3;
+    text-indent: -9999px;
+    overflow: hidden;
+    text-decoration: none;
+    height: 25px;
+    width: 25px;
+    background: transparent url('../images/site/sliderbuttons.png') no-repeat left top;
+    margin-top: -12px;
+
+}
+
+.centered-btns_nav:active {
+    opacity: 1.0;
+}
+.centered-btns_nav:hover {
+    opacity: 1.0;
+}
+
+.centered-btns_nav.next {
+    left: auto;
+    background-position: right top;
+    right: 10px;
+}
+.centered-btns_nav.prev {
+    left: 10px;
+}
+.transparent-btns_nav {
+    z-index: 3;
+    position: absolute;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    top: 0;
+    left: 0;
+    display: block;
+    background: #fff; /* Fix for IE6-9 */
+    opacity: 0;
+    filter: alpha(opacity=1);
+    width: 48%;
+    text-indent: -9999px;
+    overflow: hidden;
+    height: 91%;
+}
+
+.transparent-btns_nav.next {
+    right: 0;
+}
+
+.centered-btns_nav:focus,
+.transparent-btns_nav:focus{
+    outline: none;
+}
+
+.centered-btns_tabs,
+.transparent-btns_tabs{
+    margin-top: -20px;
+    margin-right: 5px;
+    text-align: right;
+    opacity:0.6;
+}
+
+.centered-btns_tabs li,
+.transparent-btns_tabs li
+{
+    display: inline;
+    float: none;
+    _float: left;
+    *float: left;
+    margin-right: 5px;
+}
+
+.centered-btns_tabs a,
+.transparent-btns_tabs a{
+    text-indent: 9999px;
+    overflow: hidden;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    background: grey;
+    display: inline-block;
+    _display: block;
+    *display: block;
+    -webkit-box-shadow: inset 0 0 2px 0 rgba(0,0,0,.3);
+    -moz-box-shadow: inset 0 0 2px 0 rgba(0,0,0,.3);
+    box-shadow: inset 0 0 2px 0 rgba(0,0,0,.3);
+    width: 9px;
+    height: 9px;
+    z-index:3;
+}
+
+.centered-btns_here a,
+.transparent-btns_here a,
+.large-btns_here a {
+    background: #fff;
+}
+
+.marco-h1{
+    font-size: 1.3em;
+    font-style: italic;
+}
+
+#newProducts, #sale-products {
+    padding: 1em;
+    overflow: hidden;
+}
+
+.yellow-block{
+    background-color: #FFFAAD;
+    border-radius: 0.5em;
+    padding: 1em;
+}
+
+.hover-shadow:hover{
+    -webkit-box-shadow: 1px 1px 10px 0px rgba(0,0,0,0.75) !important;
+    -moz-box-shadow: 1px 1px 10px 0px rgba(0,0,0,0.75) !important;
+    box-shadow: 1px 1px 10px 0px rgba(0,0,0,0.75) !important;
+    text-decoration: none;
+}
+
 .fade.ng-enter{
-  transition: all 0.2s linear;
-  opacity: 0;
+    transition: all 0.2s linear;
+    opacity: 0;
 }
 
 .fade{
-  opacity: 1;
+    opacity: 1;
 }
 
 .product-card{
-  position:relative;
+    position:relative;
 }
 
 .product-card .status-block{
-  position: absolute;
-  top:7px;
-  right:7px;
+    position: absolute;
+    top:1em;
+    right:1em;
+}
+
+.product-card.thumbnail{
+    border: none;
+    padding:0.5em;
+    box-shadow: none;
+    background: none;
+
 }
 
 .status-block span{
-  display: block;
-  margin-bottom: 2px;
+    display: block;
+    margin-bottom: 2px;
 }
+
+#subfooter{
+    background-color:#dedede;
+    overflow:hidden;
+    padding:1.5em;
+}
+
+#subfooter ul {
+    list-style: none;
+}
+
+#subfooter li a{
+    text-decoration:none;
+    color:#6e6e6e;
+    margin:1em;
+}
+
+#subfooter li a:hover{
+    text-decoration:underline;
+}
+
+
+#info img{
+    margin-left:10px;
+}
+
+#footer{
+    margin-top:-25px;
+    height:25px;
+    background-color:#474747;
+    text-align:center;
+    line-height:25px;
+}
+#footer a{
+    color:#3281c3;
+    text-decoration:none;
+}
+
+.seo-text{
+    padding:1em;
+    color: #9e9e9e;
+}
+
+#catalogParams {
+    background-color: #dedede;
+    padding: 0.5em;
+    overflow: hidden;
+}
+
+#catalogParams form {
+    float: right;
+}
+
+#pager{
+    text-align:center;
+    margin-top:10px;
+    height:30px;
+    line-height:30px;
+
+}
+#pager a{
+    *display:block;
+    margin-left:5px;
+    text-decoration:none;
+    color:#6e6e6e;
+    padding:5px;
+    outline:1px solid #dedede;
+}
+
+#pager a.active{
+    background: #FFFAAD;
+}
+
+#pager a:hover{
+    background-color:#dedede;
+}
+
+.marco-header-menu{
+    background-color: #dadada;
+    margin-bottom: 1em;
+}
+
+
+.marco-header-menu ul{
+    list-style: none;
+    float:right;
+    padding:0;
+    margin: 0;
+}
+
+.marco-header-menu ul li{
+    display:block;
+    float: left;
+    padding:0.5em 0;
+}
+
+#productInfo{
+    padding:1em;
+    border-radius:1em;
+    border:0.1em dotted #dedede;
+    width:100%;
+    margin-bottom: 1em;
+    overflow: hidden;
+}
+
+#productInfo span:not(.label) {
+    display:block;
+    *line-height:2em;
+}
+.price{
+    padding-bottom:1em;
+    border-bottom:1px dotted #dedede;
+}
+
+#productInfo input{
+    width:5em;
+}
+
+.buy-widget{
+    margin-top:1em;
+}
+
+.block-margin{
+    margin-bottom: 1em;
+}
+
+.product-card-status{
+    margin-bottom:1em;
+}
+
+
+.marco-gallery span.h3{
+    margin-bottom: 1em;
+    display: block;
+}
+
+.marco-gallery img{
+    margin: 0 auto 1em;
+    display: block;
+}
+
+

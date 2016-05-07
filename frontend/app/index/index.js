@@ -1,33 +1,32 @@
 'use strict';
 
-angular.module('marco.index', ['ngRoute'])
+angular.module('MirrorStore.index', ['ngRoute'])
 
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/', {
-    templateUrl: 'index/index.html',
-    controller: 'IndexCtrl'
-  });
-}])
+    .config(['$routeProvider', function($routeProvider) {
+        $routeProvider.when('/', {
+            templateUrl: 'index/index.html',
+            controller: 'indexCtrl'
+        });
+    }])
 
-.controller('IndexCtrl', function($scope, $http) {
+    .controller('indexCtrl', [function() {
 
-  $scope.result = false;
-  $http.get('/api/slider/1').success(function(data) {
-    $scope.result = true;
-    $scope.images =  data.gallery;
-  });
+    }])
 
-}).controller('NewProductsCtrl', function($scope, $http){
-  $scope.products = false;
-  $http.get('/api/products/?page_size=6&is_new=True&ordering=-time_add').success(function(data) {
-    $scope.products = data.results;
+    .directive('rsSlider', [function () {
+        return {
+            'link' : function (scope, elem, attrs) {
 
-  });
-  
-}).controller('SaleProductsCtrl', function($scope, $http){
-  $scope.products = false;
-  $http.get('/api/products/?page_size=6&is_sale=True&ordering=-time_add').success(function(data) {
-    $scope.products = data.results;
-  });
+                $(elem).responsiveSlides({
+                    auto: true,
+                    pager: true,
+                    nav: true,
+                    speed: 1000,
+                    namespace: "centered-btns"
+                });
 
-});
+            }
+        };
+    }]);
+
+

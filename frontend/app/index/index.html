@@ -1,91 +1,159 @@
-<div ng-controller="IndexCtrl">
-    <div class="col-md-12 slider">
-
-        <div class="row carousel-holder">
-
-            <div class="col-md-12" ng-if="result">
-                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                        <li ng-repeat="(index, image) in images" data-target="#carousel-example-generic"
-                            data-slide-to="{{index}}" ng-class="index==0? 'active' : ''"></li>
-                    </ol>
-                    <div class="carousel-inner">
-                        <div ng-repeat="(index, image) in images" ng-class="index==0? 'item active' : 'item'">
-                            <img class="slide-image" ng-src="{{image.path}}" alt="{{image.title}}">
-                        </div>
-                    </div>
-                    <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                        <span class="glyphicon glyphicon-chevron-left"></span>
-                    </a>
-                    <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                        <span class="glyphicon glyphicon-chevron-right"></span>
-                    </a>
-                </div>
-            </div>
-
-        </div>
-
-
-    </div>
-
-    <div class="container-fluid">
-        <p class="lead">Новинки</p>
-        <div ng-controller="NewProductsCtrl">
-            <div class="row">
-
-                <div ng-repeat="product in products" class="col-sm-4 col-lg-4 col-md-4">
-                    <div class="thumbnail product-card">
-                        <img ng-src="{{product.title_image.thumb}}" alt="">
-
-                        <div class="status-block">
-                            <span ng-if="product.is_new" class="label label-success">Новинка</span>
-                            <span ng-if="product.is_sale" class="label label-danger">Акция</span>
-                            <span ng-if="product.is_preorder" class="label label-warning">Под заказ</span>
-                        </div>
-
-                        <div class="caption">
-                            <h4 class="pull-right">{{product.price}} грн</h4>
-                            <h4>{{product.title}}</h4>
-                        </div>
-                        <div class="text-right">
-                            <a href="#" class="btn btn-primary btn-sm" role="button">В корзину</a>
-                            <a href="#" class="btn btn-default btn-sm" role="button">Подробнее</a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-    <div class="container-fluid">
-        <p class="lead">Акционные товары</p>
-        <div ng-controller="SaleProductsCtrl">
-            <div class="row">
-
-                <div ng-repeat="product in products" class="col-sm-4 col-lg-4 col-md-4">
-                    <div class="thumbnail product-card">
-                        <img ng-src="{{product.title_image.thumb}}" alt="">
-
-                        <div class="status-block">
-                            <span ng-if="product.is_new" class="label label-success">Новинка</span>
-                            <span ng-if="product.is_sale" class="label label-danger">Акция</span>
-                            <span ng-if="product.is_preorder" class="label label-warning">Под заказ</span>
-                        </div>
-
-                        <div class="caption">
-                            <h4 class="pull-right">{{product.price}} грн</h4>
-                            <h4>{{product.title}}</h4>
-                        </div>
-                        <div class="text-right">
-                            <a href="#" class="btn btn-primary btn-sm" role="button">В корзину</a>
-                            <a href="#" class="btn btn-default btn-sm" role="button">Подробнее</a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
+<div id='slider'>
+    <div class="rslides_container">
+        <ul class="rslides" rs-slider id="slider1">
+            <li><img src='../images/slider/1.png' alt=""></li>
+            <li><img src='../images/slider/2.png' alt=""></li>
+            <li><img src='../images/slider/3.png' alt=""></li>
+        </ul>
     </div>
 </div>
 
+<div id='newProducts'>
+    <span class="h1 marco-h1">Новинки на сайте:</span>
+
+    <!--Иконка товара-->
+    <div class="row">
+        <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
+            <a href="#" class="thumbnail product-card hover-shadow">
+                <img class="img-rounded" ng-src="../images/products/images.jpg" alt="">
+
+                <div class="status-block">
+                    <span class="label label-success">Новинка</span>
+                    <span class="label label-danger">Акция</span>
+                    <span class="label label-warning">Под заказ</span>
+                </div>
+
+                <div class="caption">
+                    <h4 class="pull-right">150 грн</h4>
+                    <h5>Супер товар</h5>
+                </div>
+
+            </a>
+        </div>
+        <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
+            <a href="#" class="thumbnail product-card hover-shadow">
+                <img class="img-rounded" ng-src="../images/products/images.jpg" alt="">
+
+                <div class="status-block">
+                    <span class="label label-success">Новинка</span>
+                    <span class="label label-danger">Акция</span>
+                    <span class="label label-warning">Под заказ</span>
+                </div>
+
+                <div class="caption">
+                    <h4 class="pull-right">150 грн</h4>
+                    <h5>Супер товар</h5>
+                </div>
+
+            </a>
+        </div>
+        <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
+            <a href="#" class="thumbnail product-card hover-shadow">
+                <img class="img-rounded" ng-src="../images/products/images.jpg" alt="">
+
+                <div class="status-block">
+                    <span class="label label-success">Новинка</span>
+                    <span class="label label-danger">Акция</span>
+                    <span class="label label-warning">Под заказ</span>
+                </div>
+
+                <div class="caption">
+                    <h4 class="pull-right">150 грн</h4>
+                    <h5>Супер товар</h5>
+                </div>
+
+            </a>
+        </div>
+        <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
+            <a href="#" class="thumbnail product-card hover-shadow">
+                <img class="img-rounded" ng-src="../images/products/images.jpg" alt="">
+
+                <div class="status-block">
+                    <span class="label label-success">Новинка</span>
+                    <span class="label label-danger">Акция</span>
+                    <span class="label label-warning">Под заказ</span>
+                </div>
+
+                <div class="caption">
+                    <h4 class="pull-right">150 грн</h4>
+                    <h5>Супер товар</h5>
+                </div>
+
+            </a>
+        </div>
+        <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
+            <a href="#" class="thumbnail product-card hover-shadow">
+                <img class="img-rounded" ng-src="../images/products/images.jpg" alt="">
+
+                <div class="status-block">
+                    <span class="label label-success">Новинка</span>
+                    <span class="label label-danger">Акция</span>
+                    <span class="label label-warning">Под заказ</span>
+                </div>
+
+                <div class="caption">
+                    <h4 class="pull-right">150 грн</h4>
+                    <h5>Супер товар</h5>
+                </div>
+
+            </a>
+        </div>
+        <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
+            <a href="#" class="thumbnail product-card hover-shadow">
+                <img class="img-rounded" ng-src="../images/products/images.jpg" alt="">
+
+                <div class="status-block">
+                    <span class="label label-success">Новинка</span>
+                    <span class="label label-danger">Акция</span>
+                    <span class="label label-warning">Под заказ</span>
+                </div>
+
+                <div class="caption">
+                    <h4 class="pull-right">150 грн</h4>
+                    <h5>Супер товар</h5>
+                </div>
+
+            </a>
+        </div>
+    </div>
+</div>
+<div id='sale-products' class="yellow-block">
+    <span class="h1 marco-h1">Акционные товары:</span>
+
+    <!--Иконка товара-->
+    <div class="row">
+        <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
+            <div class="thumbnail product-card hover-shadow">
+                <img class="img-rounded" ng-src="../images/products/images.jpg" alt="">
+
+                <div class="status-block">
+                    <span class="label label-success">Новинка</span>
+                    <span class="label label-danger">Акция</span>
+                    <span class="label label-warning">Под заказ</span>
+                </div>
+
+                <div class="caption">
+                    <h4 class="pull-right">150 грн</h4>
+                    <h5>Супер товар</h5>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+
+<div class="seo-text col-md-12">
+    Ваш шедевр готов!
+    Разнообразный и богатый опыт реализация намеченных плановых заданий представляет собой интересный эксперимент проверки систем массового участия. Таким образом постоянный количественный рост и сфера нашей активности играет важную роль в формировании новых предложений.
+
+    Значимость этих проблем настолько очевидна, что начало повседневной работы по формированию позиции позволяет оценить значение форм развития. Значимость этих проблем настолько очевидна, что начало повседневной работы по формированию позиции влечет за собой процесс внедрения и модернизации направлений прогрессивного развития.
+
+    Значимость этих проблем настолько очевидна, что укрепление и развитие структуры позволяет оценить значение форм развития. Задача организации, в особенности же сложившаяся структура организации обеспечивает широкому кругу (специалистов) участие в формировании новых предложений.
+
+    Повседневная практика показывает, что сложившаяся структура организации представляет собой интересный эксперимент проверки систем массового участия. Повседневная практика показывает, что дальнейшее развитие различных форм деятельности требуют от нас анализа форм развития.
+
+    Таким образом новая модель организационной деятельности играет важную роль в формировании систем массового участия. Не следует, однако забывать, что укрепление и развитие структуры требуют определения и уточнения соответствующий условий активизации. Таким образом сложившаяся структура организации играет важную роль в формировании систем массового участия. Задача организации, в особенности же дальнейшее развитие различных форм деятельности влечет за собой процесс внедрения и модернизации направлений прогрессивного развития.
+</div>
