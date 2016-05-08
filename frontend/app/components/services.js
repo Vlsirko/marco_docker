@@ -11,7 +11,7 @@ angular.module('services', ['ngResource'])
             'getNew': {
                 method: 'GET',
                 params: {
-                    page_size: 6,
+                    page_size: 9,
                     is_new: 'True',
                     ordering: '-time_add'
                 }
@@ -20,7 +20,7 @@ angular.module('services', ['ngResource'])
             'getSale': {
                 method: 'GET',
                 params: {
-                    page_size: 6,
+                    page_size: 9,
                     is_sale: 'True',
                     ordering: '-time_add'
                 }
@@ -29,8 +29,7 @@ angular.module('services', ['ngResource'])
             'getByCategorySlug': {
                 method: 'GET',
                 params: {
-                    category__url: '@category_url',
-                    ordering: '-time_add'
+                    category__url: '@category_url'
                 }
             }
         });

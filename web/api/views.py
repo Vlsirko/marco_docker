@@ -16,7 +16,7 @@ class ProductViewSet(viewsets.ModelViewSet):
     http_method_names = ['get']
     filter_backends = (filters.DjangoFilterBackend, filters.OrderingFilter)
     filter_class = ProductFilter
-    ordering_fields = ('time_add',)
+    ordering_fields = ('time_add', 'price', 'is_preorder', 'title')
     lookup_field = 'url'
 
 

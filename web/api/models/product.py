@@ -8,7 +8,7 @@ from .sale import Sale
 class Product(models.Model):
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=255, verbose_name='Название')
-    url = models.CharField(max_length=255, verbose_name='Транслитерация')
+    url = models.CharField(max_length=255, verbose_name='Транслитерация', unique=True)
     category = models.ForeignKey(Category, related_name='category', on_delete=models.SET_NULL,
                                  null=True, verbose_name='Категория')
     description = models.TextField(verbose_name='СЕО описание', blank=True)

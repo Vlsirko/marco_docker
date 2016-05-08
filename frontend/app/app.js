@@ -12,11 +12,28 @@ angular.module('MirrorStore', [
     'MirrorStore.card'
 ]).config(['$routeProvider', function ($routeProvider) {
     $routeProvider.otherwise({redirectTo: '/'});
-}]);
+}]).config(function($httpProvider) {
+    $httpProvider.interceptors.push(function($q) {
+        var realEncodeURIComponent = window.encodeURIComponent;
+        return {
+            'request': function(config) {
+                window.encodeURIComponent = function(input) {
+                    return realEncodeURIComponent(input).split("%2B").join("+");
+                };
+                return config || $q.when(config);
+            },
+            'response': function(config) {
+                window.encodeURIComponent = realEncodeURIComponent;
+                return config || $q.when(config);
+            }
+        };
+    });
+});
 
 angular.module('MirrorStore').controller('MainCtrl', function ($scope, Category) {
 
-    var data = Category.query(function () {
+    Category.query().$promise.then(function (data) {
+        data = JSON.parse(JSON.stringify(data));
         var sortedCategories = {};
         for (var index in data) {
             var parentId = !data[index].parent ? 0 : data[index].parent;
