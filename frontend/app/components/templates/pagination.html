@@ -1,0 +1,7 @@
+<nav>
+    <ul class="pagination">
+        <li ng-repeat="page in pages track by $index" ng-class="page == currPage ? 'active' : ''" >
+            <a ng-click="changePage(page)">{{page}}</a>
+        </li>
+    </ul>
+</nav>

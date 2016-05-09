@@ -11,20 +11,10 @@
 </div>
 
 <div class="row index">
-    <div ng-include="'/catalog/product.html'" ng-repeat="product in products"></div>
+    <div ng-include="'/components/templates/product.html'" ng-repeat="product in products"></div>
 </div>
 
-<!--div id='pager'>
-    <a scroll-on-click ng-repeat="page in pages" ng-class="page == currPage - 1 ? 'active' : ''" ng-click="changePage(page+1)">{{page+1}}</a>
-</div-->
-
-<nav>
-    <ul class="pagination">
-        <li ng-repeat="page in pages" ng-class="page == currPage - 1 ? 'active' : ''" >
-            <a ng-click="changePage(page+1)">{{page+1}}</a>
-        </li>
-    </ul>
-</nav>
+<marco-pagination page="[{{currPage}}, {{pagesCount}}]"></marco-pagination>
 
 <div class="seo-text col-md-12">
     Ваш шедевр готов!

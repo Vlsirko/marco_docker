@@ -22,23 +22,7 @@ angular.module('MirrorStore.index', ['ngRoute'])
         Product.getSale(function(products){
             $scope.productsSale = products.results;
         });
-    })
-    .directive('rsSlider', [function () {
-        return {
-            'link': function (scope, elem, attrs) {
+    });
 
-                if(scope.$last) {
-                    $(elem.parent()).responsiveSlides({
-                        auto: true,
-                        pager: true,
-                        nav: true,
-                        speed: 1000,
-                        namespace: "centered-btns"
-                    });
-                    
-                }
-            }
-        };
-    }]);
 
 

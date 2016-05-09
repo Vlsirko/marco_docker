@@ -11,7 +11,7 @@ class Image(models.Model):
 
     def delete(self, *args, **kwargs):
         storage, path = self.image.storage, self.image.path
-        super(models.Model, self).delete(*args, **kwargs)
+        models.Model(models.Model, self).delete(*args, **kwargs)
         storage.delete(path)
 
     def get_path(self, height='-', width='-'):

@@ -41,7 +41,7 @@ angular.module('MirrorStore.catalog', ['ngRoute'])
         }, function (data) {
             $scope.products = data.results;
             $scope.currPage = data.current;
-            $scope.pages = Array.from(Array(data.num_pages).keys());
+            $scope.pagesCount = data.num_pages;
         });
 
         $scope.changeOrdering = function () {
@@ -61,27 +61,6 @@ angular.module('MirrorStore.catalog', ['ngRoute'])
                 )
             );
         };
-
-        $scope.changePage = function (page) {
-            $location.search(
-                angular.extend(
-                    $location.search(),
-                    {page: page}
-                )
-            );
-            $window.scrollTo(0, 0);
-        }
-    })
-    .directive('scrollOnClick', function () {
-        return {
-            restrict: 'A',
-            link: function (scope, $elm) {
-                $elm.on('click', function () {
-                    $("body").animate({scrollTop: 0}, "slow");
-                });
-            }
-        }
     });
-;
 
 
