@@ -14,9 +14,8 @@ class Image(models.Model):
         models.Model(models.Model, self).delete(*args, **kwargs)
         storage.delete(path)
 
-    def get_path(self, height='-', width='-'):
-        return '{0}/{1}/{2}/{3}'.format(IMAGE_SETTINGS['server_host'], height, width,
-                                        self.image.name)
+    def path(self):
+        return '{0}/{1}'.format(IMAGE_SETTINGS['server_host'], self.image.name)
 
     class Meta:
         app_label = 'api'

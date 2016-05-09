@@ -11,17 +11,6 @@ class Slider(models.Model):
     def __str__(self):
         return self.title
 
-    def slides(self):
-        slides = self.gallery.all()
-        result_set = []
-
-        if slides:
-            from marco.settings import IMAGE_SETTINGS
-            for image in slides:
-                result_set.append(image.get_path(**IMAGE_SETTINGS['slider']))
-
-        return result_set
-
     class Meta:
         app_label = 'api'
         verbose_name = 'Cлайдер'

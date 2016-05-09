@@ -6,15 +6,15 @@ import random
 
 images = Image.objects.all()
 
-categories = Category.objects.get(url='shoes_1'), Category.objects.get(url='shoes_2')
+categories = Category.objects.get(url='sub_cat_1'), Category.objects.get(url='sub_cat_2')
 seo_block = SeoBlock.objects.get(pk=1)
 
-for i in range(10000, 20000):
+for i in range(0, 500):
     product = Product()
     product.title = 'Test Product Title {}'.format(i)
     product.url = 'test_product_title {}'.format(i)
     product.price = 100 + i
-    product._title_image = images[random.randrange(len(images) - 1)]
+    product.title_image = images[random.randrange(len(images) - 1)]
     product.category = categories[random.randrange(2)]
     product.seo_block = seo_block
     product.is_sale = random.randrange(2) == 1

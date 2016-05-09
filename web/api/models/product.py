@@ -13,10 +13,10 @@ class Product(models.Model):
                                  null=True, verbose_name='Категория')
     description = models.TextField(verbose_name='СЕО описание', blank=True)
 
-    _title_image = models.ForeignKey(Image, on_delete=models.SET_NULL, blank=True,
+    title_image = models.ForeignKey(Image, on_delete=models.SET_NULL, blank=True,
                                      null=True, verbose_name='Главное изображение')
 
-    _gallery = models.ManyToManyField(Image, related_name='gallery', blank=True,
+    gallery = models.ManyToManyField(Image, related_name='gallery', blank=True,
                                       verbose_name='Изображения')
 
     price = models.FloatField(verbose_name='Цена')
@@ -30,22 +30,6 @@ class Product(models.Model):
     is_new = models.BooleanField(verbose_name='Новинка')
     is_preorder = models.BooleanField(verbose_name='Предзаказ')
     is_sale = models.BooleanField(verbose_name='Отображать акции')
-
-    def gallery(self):
-        images = self._gallery.all()
-        result_set = []
-        for image in images:
-            result_set.append(image.get_path())
-        return result_set
-
-    def title_image(self):
-        if self._title_image:
-            from marco.settings import IMAGE_SETTINGS
-            settings = IMAGE_SETTINGS['product']
-            return {
-                'thumb': self._title_image.get_path(**settings['thumb']),
-                'path': self._title_image.get_path(**settings['image'])
-            }
 
     def __str__(self):
         return self.title

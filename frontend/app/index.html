@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="app.css">
 </head>
 
-<body ng-controller="MainCtrl">
+<body>
 <div class="container">
 
     <!--[if lt IE 7]>
@@ -43,21 +43,8 @@
                 <img id='logo' class='img-responsive' src='components/static/site/logo.png' alt='logo'>
             </a>
 
-            <div class="marco-sidebar-menu marco-margin-top">
+            <marco-sidebar></marco-sidebar>
 
-                <ul ng-if="categories">
-                    <!--Категоря одежда-->
-                    <li ng-repeat="cat in categories">
-                        <span class="title-menu">{{cat.title}}</span>
-                        <!--Подкатегории-->
-                        <ul>
-                            <li ng-repeat="childCat in cat.childrens">
-                                <a href='#/{{childCat.url}}'>{{childCat.title}}</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
         </div>
 
         <div class="col-md-9 fade" ng-view></div>

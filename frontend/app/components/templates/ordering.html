@@ -1,0 +1,3 @@
+<span>Сортировка</span>
+<select ng-model='defaultOrdering' ng-options='opt.title for opt in orderingParams track by opt.order'
+        ng-change="changeOrdering()"></select>

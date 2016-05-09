@@ -12,7 +12,7 @@ angular.module('MirrorStore.index', ['ngRoute'])
     .controller('indexCtrl', function ($scope, Slider, Product) {
 
         Slider.get({id: 1}, function(slider){
-            $scope.slides = slider.slides;
+            $scope.slides = slider.gallery;
         });
 
         Product.getNew(function(products){

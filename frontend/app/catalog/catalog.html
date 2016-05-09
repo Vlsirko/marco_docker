@@ -1,12 +1,7 @@
 <div id='catalogParams'>
     <div class="pull-right">
-        <span>Сортировка</span>
-        <select ng-model='defaultOrdering' ng-options='opt.title for opt in orderingParams track by opt.order'
-                ng-change="changeOrdering()"></select>
-
-        <span>Показывать на странице</span>
-        <select ng-model='pageSize' ng-options="opt for opt in pageSizes track by opt"
-                ng-change="changePageSize()"></select>
+        <ordering-selector field="{{ordering}}"></ordering-selector>
+        <page-size-selector></page-size-selector>
     </div>
 </div>
 

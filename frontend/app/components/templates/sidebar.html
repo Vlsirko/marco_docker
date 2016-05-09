@@ -1,0 +1,15 @@
+<div class="marco-sidebar-menu marco-margin-top">
+
+    <ul ng-if="categories">
+        <!--Категоря одежда-->
+        <li ng-repeat="cat in categories">
+            <span class="title-menu">{{cat.title}}</span>
+            <!--Подкатегории-->
+            <ul>
+                <li ng-repeat="childCat in cat.childrens">
+                    <a href='#/{{childCat.url}}'>{{childCat.title}}</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>

@@ -143,24 +143,4 @@ REST_FRAMEWORK = {
 
 IMAGE_SETTINGS = {
     'server_host': 'http://i.marco.dev',
-    'product': {
-        'thumb': {
-            'height': 320,
-            'width': 240
-        },
-        'image': {
-            'height': 640,
-            'width': 480
-        }
-    },
-    'slider': {
-        'height': 400,
-        'width': 800
-    },
-    'sale': {
-        'thumb': {
-            'height': 64,
-            'width': 64
-        }
-    }
 }

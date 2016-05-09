@@ -28,29 +28,5 @@ angular.module('MirrorStore', [
             }
         };
     });
-});
-
-angular.module('MirrorStore').controller('MainCtrl', function ($scope, Category) {
-
-    Category.query().$promise.then(function (data) {
-        data = JSON.parse(JSON.stringify(data));
-        var sortedCategories = {};
-        for (var index in data) {
-            var parentId = !data[index].parent ? 0 : data[index].parent;
-            if (!sortedCategories[parentId]) {
-                sortedCategories[parentId] = [];
-            }
-            sortedCategories[parentId].push(data[index]);
-        }
-
-        var result = [];
-        for (var index in sortedCategories[0]) {
-            if (sortedCategories[0][index].id) {
-                sortedCategories[0][index].childrens = sortedCategories[sortedCategories[0][index].id]
-            }
-            result.push(sortedCategories[0][index])
-        }
-
-        $scope.categories = result;
-    });
-});
+}).run(['$templateCache', function ( $templateCache ) {
+    $templateCache.removeAll(); }]);
