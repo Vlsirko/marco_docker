@@ -190,7 +190,7 @@ angular.module('MirrorStore').directive('marcoSidebar', ['Category', function (C
 angular.module('MirrorStore').directive('marcoImage', [function () {
     return {
         restrict: 'E',
-        template: '<img class="{{class}}" src="{{ src }}" alt="{{title}}"/>',
+        template: '<img class="{{class}}" src="{{ src }}" alt="{{title}}">',
         link: function ($scope, element, attrs) {
             attrs.$observe('source', function (src) {
                 var source = src.split('/');

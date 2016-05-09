@@ -400,3 +400,7 @@ a.grey{
 .index{
     min-height: 1000px !important;
 }
+
+.marco-image{
+    width:100%;
+}
