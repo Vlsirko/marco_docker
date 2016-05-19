@@ -232,3 +232,30 @@ angular.module('MirrorStore').directive('marcoAddToCard', function($cookies){
     }
 });
 
+angular.module('MirrorStore').directive('marcoTopSidebar', function($cookies){
+    return {
+        restrict: 'E',
+        templateUrl: '/components/templates/top-sidebar.html',
+        link: function($scope, element, attrs){
+            $scope.$watch();
+            $scope.basket = 0;
+
+            $scope.$watch(function(){
+                var basket = $cookies.getObject('basket');
+                var keys = Object.keys(basket);
+                var quant = 0;
+
+                for(var key in keys){
+
+                    quant+=basket[keys[key]];
+                }
+
+                return quant;
+            }, function(v){
+                $scope.basket = v;
+            });
+        }
+    }
+});
+
+
