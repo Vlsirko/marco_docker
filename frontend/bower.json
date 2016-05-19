@@ -12,6 +12,7 @@
     "angular-resource" : "~1.4.0",
     "angular-animate" : "~1.4.0",
     "angular-sanitize" : "*",
+    "angular-cookies": "~1.4.0",
     "bootstrap" : "~3",
     "bootstrap-theme-cosmo" : "*",
     "responsive-slider" : "https://github.com/viljamis/ResponsiveSlides.js.git"

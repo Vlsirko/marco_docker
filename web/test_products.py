@@ -6,7 +6,7 @@ import random
 
 images = Image.objects.all()
 
-categories = Category.objects.get(url='sub_cat_1'), Category.objects.get(url='sub_cat_2')
+categories = Category.objects.get(url='1'), Category.objects.get(url='2')
 seo_block = SeoBlock.objects.get(pk=1)
 
 for i in range(0, 500):

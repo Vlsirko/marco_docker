@@ -1,7 +1,7 @@
 <div class="row block-margin">
 
     <div class='col-md-5 col-sm-6 col-xs-12'>
-        <img id='titleImg' class="img-responsive" ng-src='{{product.title_image.path}}'>
+        <marco-image class='marco-image img-responsive' height="480" width="320" source="{{product.title_image.path}}" alt="{{product.title_image.title}}"></marco-image>
     </div>
 
     <div class="col-md-7 col-sm-6  col-xs-12">
@@ -21,12 +21,7 @@
 
             <div class="col-md-12 form-inline buy-widget">
                 <div class="form-group">
-                    <label>Количество:
-                        <input type="number" class="form-control" max="99" name="quantity"
-                               data-product-id="{{product.url}}"
-                               value="1">
-                    </label>
-                    <button class="btn btn-primary">В корзину</button>
+                   <marco-add-to-card id="{{product.id}}"></marco-add-to-card>
                 </div>
             </div>
 
@@ -55,7 +50,7 @@
 </div>
 <div class="col-md-12 block-margin marco-gallery" ng-if="product.gallery.length>0">
     <span class="h3">Изображения товара:</span>
-    <img ng-repeat="image in product.gallery" class='img-responsive' ng-src="{{image}}" alt="{{image}}">
+    <marco-image ng-repeat="image in product.gallery" class='marco-image img-responsive' height="640" width="480" source="{{product.title_image.path}}" alt="{{product.title_image.title}}"></marco-image>
 </div>
 
 <div class="seo-text col-md-12">

@@ -136,7 +136,8 @@ angular.module('MirrorStore').directive('orderingSelector', ['$location', functi
 
         }
     };
-}]);
+}])
+;
 
 angular.module('MirrorStore').directive('pageSizeSelector', ['$location', function ($location) {
     return {
@@ -203,4 +204,31 @@ angular.module('MirrorStore').directive('marcoImage', [function () {
         }
     }
 }]);
+
+angular.module('MirrorStore').directive('marcoAddToCard', function($cookies){
+    return {
+        restrict: 'E',
+        templateUrl: '/components/templates/add-to-card.html',
+        link: function($scope, element, attrs){
+            $scope.quantity = 1;
+            attrs.$observe('id', function(id){
+                $scope.addToCard = function(){
+                    var card = $cookies.getObject('basket');
+                    if(!card){
+                        card = {};
+                    }
+
+                    if(card[id]){
+                        card[id] = card[id] + $scope.quantity;
+                    }else {
+                        card[id] = $scope.quantity;
+                    }
+
+                    $cookies.putObject('basket', card);
+                }
+            });
+
+        }
+    }
+});
 

@@ -3,7 +3,7 @@
 angular.module('MirrorStore.catalog', ['ngRoute'])
 
     .config(['$routeProvider', function ($routeProvider) {
-        $routeProvider.when('/:category', {
+        $routeProvider.when('/c/:category', {
             templateUrl: 'catalog/catalog.html',
             controller: 'catalogCtrl'
         });

@@ -401,6 +401,20 @@ a.grey{
     min-height: 1000px !important;
 }
 
-.marco-image{
+.full-width{
     width:100%;
 }
+
+.remove{
+    color:red;
+    cursor: pointer;
+}
+
+.basket{
+    min-height:50em;
+}
+
+.basket table td {
+    vertical-align: middle !important;
+}
+
