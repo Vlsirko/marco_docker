@@ -24,7 +24,8 @@ angular.module('MirrorStore.basket', ['ngRoute'])
                $scope.$watch(function () {
                     var amount = 0;
                     for (var product in data.results) {
-                        amount += data.results[product].price * $scope.basket[data.results[product].id];
+                        var quantity = $scope.basket[data.results[product].id] ? $scope.basket[data.results[product].id] : 0;
+                        amount += data.results[product].price * quantity;
                     }
                     return amount;
 
