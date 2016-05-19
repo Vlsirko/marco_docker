@@ -237,11 +237,15 @@ angular.module('MirrorStore').directive('marcoTopSidebar', function($cookies){
         restrict: 'E',
         templateUrl: '/components/templates/top-sidebar.html',
         link: function($scope, element, attrs){
-            $scope.$watch();
+
             $scope.basket = 0;
 
             $scope.$watch(function(){
                 var basket = $cookies.getObject('basket');
+
+                if(!basket){
+                    basket = {};
+                }
                 var keys = Object.keys(basket);
                 var quant = 0;
 
