@@ -8,7 +8,7 @@
                                  source="{{product.title_image.path}}" alt="{{product.title_image.title}}"></marco-image>
                 </td>
                 <td>{{product.title}}</td>
-                <td class="col-md-2"><input ng-change="changeQuantity()" class="form-control" min="1" max="99" type="number" ng-model="basket[product.id]"/></td>
+                <td class="col-md-2"><input ng-change="changeQuantity()" class="form-control" min="1" type="number" ng-model="basket[product.id]"/></td>
                 <td class="col-md-2">{{product.price * basket[product.id]}} грн</td>
                 <td class="col-md-1"><i class="glyphicon glyphicon-remove remove" ng-click="removeFromCard(product.id)"></i></td>
             </tr>
