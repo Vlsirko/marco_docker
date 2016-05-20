@@ -5,6 +5,11 @@ angular.module('services', ['ngResource'])
     .factory('Slider', function ($resource) {
         return $resource('/api/slider/:id/', {id: '@id'});
     })
+
+    .factory('Order', function ($resource) {
+        return $resource('/api/order/:id/', {id: '@id'});
+    })
+    
     .factory('Product', function ($resource) {
         return $resource('/api/products/:slug/', {slug: '@slug'}, {
 

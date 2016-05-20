@@ -5,6 +5,8 @@ from api.models.images import Image
 from api.models.banners import Slider
 from api.models.seo_block import SeoBlock
 from api.models.sale import Sale
+from api.models.order import Order, OrderInline
+from api.models.user import User
 
 from django_mptt_admin.admin import DjangoMpttAdmin
 
@@ -23,4 +25,6 @@ admin.site.register(Image)
 admin.site.register(Slider)
 admin.site.register(Sale)
 admin.site.register(SeoBlock)
+admin.site.register(Order, OrderInline)
+admin.site.register(User)
 

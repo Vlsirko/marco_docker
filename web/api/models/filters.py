@@ -12,6 +12,7 @@ class IntegerListFilter(django_filters.Filter):
 
 class ProductFilter(filters.FilterSet):
     ids = IntegerListFilter(name="id", lookup_type='in')
+
     class Meta:
         model = Product
         fields = ['category__url', 'is_new', 'is_sale', 'ids']

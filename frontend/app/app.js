@@ -30,5 +30,9 @@ angular.module('MirrorStore', [
             }
         };
     });
-}).run(['$templateCache', function ( $templateCache ) {
-    $templateCache.removeAll(); }]);
+
+    $httpProvider.defaults.xsrfCookieName = 'csrftoken';
+    $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
+});
+
+

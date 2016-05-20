@@ -9,7 +9,7 @@ angular.module('MirrorStore.basket', ['ngRoute'])
         });
     }])
 
-    .controller('basketCtrl', function($scope, $routeParams, Product, $cookies) {
+    .controller('basketCtrl', function($scope, $routeParams, Product, $cookies, Order) {
         $scope.basket = $cookies.getObject('basket') ? $cookies.getObject('basket') : {};
         $scope.empty = Object.keys($scope.basket).length === 0;
         $scope.amount = 0;
@@ -52,5 +52,11 @@ angular.module('MirrorStore.basket', ['ngRoute'])
                 $scope.empty = true;
                 $cookies.remove('basket');
             };
+
+            $scope.confirmOrder = function(){
+                Order.save({user: 1, basket: $cookies.getObject('basket')}, function(data){
+                    console.log(data);
+                });
+            }
         }
     });
