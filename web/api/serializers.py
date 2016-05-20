@@ -4,7 +4,7 @@ from api.models.category import Category
 from api.models.banners import Slider
 from api.models.sale import Sale
 from api.models.images import Image
-from api.models.order import Order, ProductSet, BasketField
+from api.models.order import Order, ProductSet
 from api.models.user import User
 
 

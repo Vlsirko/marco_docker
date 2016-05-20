@@ -55,7 +55,8 @@ angular.module('MirrorStore.basket', ['ngRoute'])
 
             $scope.confirmOrder = function(){
                 Order.save({user: 1, basket: $cookies.getObject('basket')}, function(data){
-                    console.log(data);
+                    alert('Заказ успешно оформлен');
+                    $scope.clearBasket();
                 });
             }
         }

@@ -58,17 +58,3 @@ class ProductSetInline(admin.TabularInline):
 class OrderInline(admin.ModelAdmin):
     inlines = (ProductSetInline,)
 
-
-class BasketField(serializers.Field):
-
-    def to_representation(self, obj):
-
-        product_set = ProductSet.objects.all().filter(order_id=obj.get()[0].order.id)
-
-        result = []
-        for ps in product_set:
-            result.append({ps.product.id: ps.quantity})
-        return result
-
-    def to_internal_value(self, data):
-        return data
