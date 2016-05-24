@@ -9,7 +9,11 @@ angular.module('MirrorStore.index', ['ngRoute'])
         });
     }])
 
-    .controller('indexCtrl', function ($scope, Slider, Product) {
+    .controller('indexCtrl', function ($rootScope,$scope, Slider, Product) {
+
+        $rootScope.title = 'MirrorStore. Bjd куклы и аксессуары';
+        $rootScope.keywords = 'Одежда для bjd, куклы bjd, bjd';
+        $rootScope.description = 'Супер описание';
 
         Slider.get({id: 1}, function(slider){
             $scope.slides = slider.gallery;

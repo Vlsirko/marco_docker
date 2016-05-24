@@ -6,6 +6,7 @@ from api.models.sale import Sale
 from api.models.images import Image
 from api.models.order import Order, ProductSet
 from api.models.user import User
+from api.models.seo_block import SeoBlock
 
 
 class ImageSerializer(serializers.ModelSerializer):
@@ -14,10 +15,18 @@ class ImageSerializer(serializers.ModelSerializer):
         fields = ('title', 'path')
 
 
+class SeoBlockSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SeoBlock
+        fields = '__all__'
+
+
 class CategorySerializer(serializers.ModelSerializer):
+    seo_block = SeoBlockSerializer(many=False)
+
     class Meta:
         model = Category
-        fields = ('id', 'title', 'parent', 'url')
+        fields = ('id', 'title', 'parent', 'url', 'seo_block')
 
 
 class SaleSerializer(serializers.ModelSerializer):
@@ -41,6 +50,7 @@ class ProductSerializer(serializers.ModelSerializer):
     sales = SaleSerializer(many=True, read_only=True)
     title_image = ImageSerializer(many=False, read_only=True)
     gallery = ImageSerializer(many=True, read_only=True)
+    seo_block = SeoBlockSerializer(many=False)
     lookup_field = 'url'
 
     class Meta:
@@ -56,7 +66,8 @@ class ProductSerializer(serializers.ModelSerializer):
                   'is_new',
                   'is_sale',
                   'is_preorder',
-                  'sales')
+                  'sales',
+                  'seo_block')
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -87,7 +98,7 @@ class OrderSerializer(serializers.ModelSerializer):
         user_data = validated_data.pop('user')
         user_email = user_data.pop('email')
         validated_data['user'] = User.objects.get_or_create(email=user_email, defaults=user_data)[0]
-        
+
         order = Order.objects.create(**validated_data)
         for product_id in basket:
             product = Product.objects.get(pk=product_id)
