@@ -9,7 +9,7 @@ angular.module('MirrorStore.basket', ['ngRoute'])
         });
     }])
 
-    .controller('basketCtrl', function($scope, $routeParams, Product, $cookies, Order) {
+    .controller('basketCtrl', function($scope, $routeParams, Product, $cookies, Order, $uibModal) {
         $scope.basket = $cookies.getObject('basket') ? $cookies.getObject('basket') : {};
         $scope.empty = Object.keys($scope.basket).length === 0;
         $scope.amount = 0;
@@ -37,7 +37,7 @@ angular.module('MirrorStore.basket', ['ngRoute'])
                     $scope.amount += data.results[product].price * $scope.basket[data.results[product].id];
                 }
             });
-
+            
             $scope.removeFromCard = function (id) {
                 delete $scope.basket[id];
                 $scope.empty = Object.keys($scope.basket).length === 0;
@@ -53,11 +53,12 @@ angular.module('MirrorStore.basket', ['ngRoute'])
                 $cookies.remove('basket');
             };
 
-            $scope.confirmOrder = function(){
-                Order.save({user: 1, basket: $cookies.getObject('basket')}, function(data){
-                    alert('Заказ успешно оформлен');
-                    $scope.clearBasket();
+            $scope.showUserPopup = function(){
+               $uibModal.open({
+                    animation: true,
+                    controller: 'confirmOrderCtrl',
+                    templateUrl: 'confirm_order/confirm_order.html'
                 });
-            }
+            };
         }
     });

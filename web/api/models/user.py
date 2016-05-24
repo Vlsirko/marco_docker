@@ -4,7 +4,8 @@ from django.db import models
 class User(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=255, verbose_name='Имя')
-    email = models.EmailField(verbose_name='Email')
+    email = models.EmailField(verbose_name='Email', unique=True)
+    phone = models.CharField(max_length=255, verbose_name='Телефон')
 
     def __str__(self):
         return self.name

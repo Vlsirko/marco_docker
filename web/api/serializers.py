@@ -62,26 +62,36 @@ class ProductSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('name', 'email')
+        fields = ('id', 'name', 'email', 'phone')
+        extra_kwargs = {
+            'email': {
+                'validators': []
+            }
+        }
 
 
 class OrderSerializer(serializers.ModelSerializer):
-    basket = serializers.DictField(source='get_basket')
+    """
+    Serializer для заказа
+    """
+    basket = serializers.DictField(required=True)
+    user = UserSerializer(required=True, partial=True)
 
     class Meta:
         model = Order
-        fields = ('id', 'user', 'status', 'basket')
+        fields = ('id', 'user', 'status', 'basket', 'total_amount', 'comment', 'delivery_method', 'comment_admin')
+        read_only_fields = ('comment_admin',)
 
     def create(self, validated_data):
-        if 'get_basket' not in validated_data:
-            raise serializers.ValidationError('Can\'t create empty order')
-
-        basket = validated_data.pop('get_basket')
+        basket = validated_data.pop('basket')
+        user_data = validated_data.pop('user')
+        user_email = user_data.pop('email')
+        validated_data['user'] = User.objects.get_or_create(email=user_email, defaults=user_data)[0]
+        
         order = Order.objects.create(**validated_data)
         for product_id in basket:
             product = Product.objects.get(pk=product_id)
             if product:
                 ProductSet.objects.create(order=order, product=product, quantity=basket[product_id])
+
         return order
-
-

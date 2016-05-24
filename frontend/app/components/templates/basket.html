@@ -4,13 +4,11 @@
         <table class="table table-striped">
             <tr ng-repeat="product in products" ng-show="basket[product.id]">
                 <td class="2">
-                    <a href="#/c/{{product.category.url}}/{{product.url}}">
                     <marco-image class='marco-image img-responsive' height="64" width="64"
                                  source="{{product.title_image.path}}" alt="{{product.title_image.title}}"></marco-image>
-                    </a>
                 </td>
-                <td><a href="#/c/{{product.category.url}}/{{product.url}}">{{product.title}}</a></td>
-                <td class="col-md-2"><input ng-change="changeQuantity()" class="form-control" min="1" type="number" ng-model="basket[product.id]"/></td>
+                <td>{{product.title}}</td>
+                <td class="col-md-2"><input ng-change="changeQuantity()" class="form-control" min="1" max="99" type="number" ng-model="basket[product.id]"/></td>
                 <td class="col-md-2">{{product.price * basket[product.id]}} грн</td>
                 <td class="col-md-1"><i class="glyphicon glyphicon-remove remove" ng-click="removeFromCard(product.id)"></i></td>
             </tr>
@@ -18,10 +16,9 @@
         <div class="row text-right">
             <span class="h4">Итого: {{amount}} грн</span>
         </div>
-
         <div class="row pull-right">
             <button ng-click="clearBasket()" class="btn btn-default">Очистить</button>
-            <button ng-click="showUserPopup()" class="btn btn-success">Оформить заказ</button>
+            <button class="btn btn-success">Оформить заказ</button>
         </div>
     </div>
 

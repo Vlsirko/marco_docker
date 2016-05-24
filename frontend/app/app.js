@@ -7,10 +7,12 @@ angular.module('MirrorStore', [
     'ngAnimate',
     'ngSanitize',
     'ngCookies',
+    'ui.bootstrap',
     'services',
     'MirrorStore.index',
     'MirrorStore.catalog',
     'MirrorStore.card',
+    'MirrorStore.confirmOrder',
     'MirrorStore.basket'
 ]).config(['$routeProvider', function ($routeProvider) {
     $routeProvider.otherwise({redirectTo: '/'});

@@ -2,7 +2,7 @@ from django.db import models
 from api.models.user import User
 from api.models.product import Product
 from django.contrib import admin
-from rest_framework import serializers
+from django.db.models import Sum
 
 
 class Order(models.Model):
@@ -16,24 +16,42 @@ class Order(models.Model):
         (6, 'Изготовление')
     ]
 
+    DELIVERY_METHODS = [
+        (0, 'Самовывоз'),
+        (1, 'Новая Почта'),
+        (2, 'Укрпочта')
+    ]
+
     id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, related_name='order_user_pk', verbose_name='Пользователь',
                              null=True)
     date_add = models.DateTimeField(auto_now_add=True, editable=False, blank=True)
     status = models.IntegerField(choices=STATUSES, default=0, verbose_name='Статус')
+    delivery_method = models.IntegerField(choices=DELIVERY_METHODS, default=0, verbose_name='Способ доставки')
+    comment = models.TextField(null=True, blank=True, verbose_name='Комментарий к заказу')
+    comment_admin = models.TextField(null=True, blank=True, verbose_name='Комментарий продавца')
     product_set = models.ManyToManyField(Product, through='ProductSet')
 
-    def __str__(self):
-        return 'Заказ №{}'.format(self.id)
+    @property
+    def total_amount(self):
+        """
+        Возвращает сумму заказа
+        """
+        return self.product_set.aggregate(Sum('price')).get('price__sum')
 
-    def get_basket(self):
+    @property
+    def basket(self):
+        """
+        Возвращает содержимое корзины в виде словаря где ключем есть id товара, а значением его количество
+        """
         product_set = ProductSet.objects.all().filter(order_id=self.id)
         result = {}
         for line in product_set:
             result[line.product.id] = line.quantity
         return result
 
-
+    def __str__(self):
+        return 'Заказ №{}'.format(self.id)
 
     class Meta:
         app_label = 'api'
@@ -57,4 +75,3 @@ class ProductSetInline(admin.TabularInline):
 
 class OrderInline(admin.ModelAdmin):
     inlines = (ProductSetInline,)
-

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from api.serializers import ProductSerializer, SliderSerializer, CategorySerializer, OrderSerializer
+from api.serializers import ProductSerializer, SliderSerializer, CategorySerializer, OrderSerializer, UserSerializer
 from api.models.product import Product
 from api.models.banners import Slider
 from api.models.category import Category
@@ -8,6 +8,7 @@ from rest_framework import viewsets
 from rest_framework import filters
 from api.models.pagination import ProductListPagination
 from api.models.order import Order
+from api.models.user import User
 
 
 # Create your views here.
@@ -37,3 +38,8 @@ class CategoryViewSet(viewsets.ModelViewSet):
 class OrderViewSet(viewsets.ModelViewSet):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
+
+
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
