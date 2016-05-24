@@ -33,6 +33,7 @@ class CategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all().filter(enabled=True)
     serializer_class = CategorySerializer
     http_method_names = ['get']
+    lookup_field = 'url'
 
 
 class OrderViewSet(viewsets.ModelViewSet):

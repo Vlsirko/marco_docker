@@ -12,29 +12,5 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RenameField(
-            model_name='product',
-            old_name='_gallery',
-            new_name='gallery',
-        ),
-        migrations.RenameField(
-            model_name='product',
-            old_name='_title_image',
-            new_name='title_image',
-        ),
-        migrations.RenameField(
-            model_name='sale',
-            old_name='_image',
-            new_name='image',
-        ),
-        migrations.AlterField(
-            model_name='category',
-            name='url',
-            field=models.CharField(max_length=255, unique=True),
-        ),
-        migrations.AlterField(
-            model_name='product',
-            name='url',
-            field=models.CharField(max_length=255, unique=True, verbose_name='Транслитерация'),
-        ),
+ 
     ]
