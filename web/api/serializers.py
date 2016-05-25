@@ -18,7 +18,7 @@ class ImageSerializer(serializers.ModelSerializer):
 class SeoBlockSerializer(serializers.ModelSerializer):
     class Meta:
         model = SeoBlock
-        fields = '__all__'
+        exclude = ('object_id', 'content_type', 'id')
 
 
 class CategorySerializer(serializers.ModelSerializer):

@@ -40,6 +40,11 @@ class Product(models.Model):
     def title_image(self):
         return '{0}/{1}'.format(IMAGE_SETTINGS['server_host'], self._title_image.name)
 
+    @property
+    def seo_block(self):
+        content_type = ContentType.objects.get(app_label='api', model='Product')
+        return SeoBlock.objects.get(object_id=self.id, content_type=content_type)
+
     class Meta:
         app_label = 'api'
         verbose_name = 'Товар'
