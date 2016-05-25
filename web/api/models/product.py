@@ -3,6 +3,8 @@ from .images import Image
 from .category import Category
 from .seo_block import SeoBlock
 from .sale import Sale
+from marco.settings import IMAGE_SETTINGS
+from django.contrib.contenttypes.models import ContentType
 
 
 class Product(models.Model):
@@ -11,13 +13,9 @@ class Product(models.Model):
     url = models.CharField(max_length=255, verbose_name='Транслитерация', unique=True)
     category = models.ForeignKey(Category, related_name='category', on_delete=models.SET_NULL,
                                  null=True, verbose_name='Категория')
-    description = models.TextField(verbose_name='СЕО описание', blank=True)
+    description = models.TextField(verbose_name='Описание товара', blank=True)
 
-    title_image = models.ForeignKey(Image, on_delete=models.SET_NULL, blank=True,
-                                     null=True, verbose_name='Главное изображение')
-
-    gallery = models.ManyToManyField(Image, related_name='gallery', blank=True,
-                                      verbose_name='Изображения')
+    _title_image = models.ImageField(upload_to='product/img/%Y/%m/%d/', verbose_name='Главное изображение')
 
     price = models.FloatField(verbose_name='Цена')
     enabled = models.BooleanField(verbose_name='Активный')
@@ -33,6 +31,15 @@ class Product(models.Model):
 
     def __str__(self):
         return self.title
+
+    @property
+    def gallery(self):
+        content_type = ContentType.objects.get(app_label='api', model='Product')
+        return Image.objects.all().filter(object_id=self.id, content_type=content_type)
+
+    @property
+    def title_image(self):
+        return '{0}/{1}'.format(IMAGE_SETTINGS['server_host'], self._title_image.name)
 
     class Meta:
         app_label = 'api'

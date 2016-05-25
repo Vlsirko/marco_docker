@@ -48,7 +48,6 @@ class SliderSerializer(serializers.ModelSerializer):
 class ProductSerializer(serializers.ModelSerializer):
     category = CategorySerializer(many=False, read_only=True)
     sales = SaleSerializer(many=True, read_only=True)
-    title_image = ImageSerializer(many=False, read_only=True)
     gallery = ImageSerializer(many=True, read_only=True)
     seo_block = SeoBlockSerializer(many=False)
     lookup_field = 'url'

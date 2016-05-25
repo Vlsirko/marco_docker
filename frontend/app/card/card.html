@@ -1,7 +1,7 @@
 <div class="row block-margin">
 
     <div class='col-md-5 col-sm-6 col-xs-12'>
-        <marco-image class='marco-image img-responsive' height="480" width="320" source="{{product.title_image.path}}" alt="{{product.title_image.title}}"></marco-image>
+        <marco-image class='marco-image img-responsive' height="480" width="320" source="{{product.title_image}}" alt="{{product.title_image}}"></marco-image>
     </div>
 
     <div class="col-md-7 col-sm-6  col-xs-12">
@@ -50,5 +50,5 @@
 </div>
 <div class="col-md-12 block-margin marco-gallery" ng-if="product.gallery.length>0">
     <span class="h3">Изображения товара:</span>
-    <marco-image ng-repeat="image in product.gallery" class='marco-image img-responsive' height="640" width="480" source="{{product.title_image.path}}" alt="{{product.title_image.title}}"></marco-image>
+    <marco-image ng-repeat="image in product.gallery" class='marco-image img-responsive' height="640" width="480" source="{{image.path}}" alt="{{image.title}}"></marco-image>
 </div>
