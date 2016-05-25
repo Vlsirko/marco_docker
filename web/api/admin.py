@@ -3,7 +3,7 @@ from api.models.product import Product
 from api.models.category import Category
 from api.models.images import ImageInline
 from api.models.banners import Slider
-from api.models.seo_block import SeoBlock
+from api.models.seo_block import SeoBlockInline
 from api.models.sale import Sale
 from api.models.order import Order, OrderInline
 from api.models.user import User
@@ -15,12 +15,17 @@ class CategoryAdmin(DjangoMpttAdmin):
     tree_title_field = 'title'
     #tree_display = ('name', 'slug', 'created|date')  # name тут указывать необязательно
 
+    inlines =[
+        SeoBlockInline
+    ]
+
     class Meta:
         model = Category
 
 class ProductAdmin(admin.ModelAdmin):
     inlines = [
-        ImageInline
+        ImageInline,
+        SeoBlockInline
     ]
 
 class SliderAdmin(admin.ModelAdmin):
@@ -33,7 +38,6 @@ admin.site.register(Product, ProductAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Slider, SliderAdmin)
 admin.site.register(Sale)
-admin.site.register(SeoBlock)
 admin.site.register(Order, OrderInline)
 admin.site.register(User)
 

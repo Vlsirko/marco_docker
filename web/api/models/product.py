@@ -19,8 +19,7 @@ class Product(models.Model):
 
     price = models.FloatField(verbose_name='Цена')
     enabled = models.BooleanField(verbose_name='Активный')
-    seo_block = models.ForeignKey(SeoBlock, related_name='seo', on_delete=models.SET_NULL,
-                                  null=True, verbose_name='Сео блок')
+
     time_add = models.DateTimeField(auto_now_add=True, editable=False, blank=True)
 
     sales = models.ManyToManyField(Sale, related_name='sale_pk', blank=True, verbose_name='Акции')

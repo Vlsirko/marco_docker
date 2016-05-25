@@ -7,8 +7,7 @@ class Category(MPTTModel):
     url = models.CharField(max_length=255, unique=True)
     parent = TreeForeignKey('self', blank=True, null=True, verbose_name="Родитель", related_name='child',  db_index=True)
     enabled = models.BooleanField()
-    seo_block = models.ForeignKey(SeoBlock, on_delete=models.SET_NULL, null=True,
-                                  verbose_name='Сео блок')
+
 
     def __str__(self):
         return self.title
