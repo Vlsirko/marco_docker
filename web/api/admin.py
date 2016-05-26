@@ -29,7 +29,11 @@ class ProductAdmin(admin.ModelAdmin):
         SeoBlockInline
     ]
     form = ProductForm
-
+    filter_horizontal = ['sales']
+    list_filter = ('is_new', 'is_sale', 'is_preorder', 'enabled')
+    search_fields = ('title', 'id')
+    list_display = ('title_image_thumb', 'title', 'category', 'price', 'time_add', 'enabled')
+    list_display_links = ('title', 'title_image_thumb')
 
 class SliderAdmin(admin.ModelAdmin):
     inlines = [

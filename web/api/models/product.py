@@ -7,6 +7,7 @@ from marco.settings import IMAGE_SETTINGS
 from django.contrib.contenttypes.models import ContentType
 from django import forms
 from mptt.models import TreeForeignKey
+from django.utils.html import format_html
 
 
 class Product(models.Model):
@@ -41,6 +42,11 @@ class Product(models.Model):
     @property
     def title_image(self):
         return '{0}/{1}'.format(IMAGE_SETTINGS['server_host'], self._title_image.name)
+
+    @property
+    def title_image_thumb(self):
+        return format_html(
+            '<img src="{0}/64/64/{1}" alt="thumb"/>'.format(IMAGE_SETTINGS['server_host'], self._title_image.name))
 
     @property
     def seo_block(self):

@@ -7,7 +7,7 @@ from django import forms
 
 class Image(models.Model):
     title = models.CharField(max_length=255, verbose_name='Название')
-    image = models.ImageField(upload_to='product/img/%Y/%m/%d/')
+    image = models.ImageField(upload_to='images/')
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey('content_type', 'object_id')
@@ -16,8 +16,11 @@ class Image(models.Model):
         return self.title
 
     def delete(self, *args, **kwargs):
+        """
+        Удаляет изображение
+        """
         storage, path = self.image.storage, self.image.path
-        models.Model(models.Model, self).delete(*args, **kwargs)
+        super(Image, self).delete(*args, **kwargs)
         storage.delete(path)
 
     def path(self):

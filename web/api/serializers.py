@@ -30,8 +30,6 @@ class CategorySerializer(serializers.ModelSerializer):
 
 
 class SaleSerializer(serializers.ModelSerializer):
-    image = ImageSerializer(many=False, read_only=True)
-
     class Meta:
         model = Sale
         fields = ('title', 'description', 'image')
