@@ -1,18 +1,20 @@
 from django.db import models
-from .images import Image
+from .images import Image, ImagePreviewWidget
 from .category import Category
 from .seo_block import SeoBlock
 from .sale import Sale
 from marco.settings import IMAGE_SETTINGS
 from django.contrib.contenttypes.models import ContentType
+from django import forms
+from mptt.models import TreeForeignKey
 
 
 class Product(models.Model):
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=255, verbose_name='Название')
     url = models.CharField(max_length=255, verbose_name='Транслитерация', unique=True)
-    category = models.ForeignKey(Category, related_name='category', on_delete=models.SET_NULL,
-                                 null=True, verbose_name='Категория')
+    category = TreeForeignKey(Category, related_name='category', on_delete=models.SET_NULL,
+                              null=True, verbose_name='Категория')
     description = models.TextField(verbose_name='Описание товара', blank=True)
 
     _title_image = models.ImageField(upload_to='product/img/%Y/%m/%d/', verbose_name='Главное изображение')
@@ -49,3 +51,12 @@ class Product(models.Model):
         app_label = 'api'
         verbose_name = 'Товар'
         verbose_name_plural = 'Товары'
+
+
+class ProductForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = '__all__'
+        widgets = {
+            '_title_image': ImagePreviewWidget()
+        }

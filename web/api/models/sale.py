@@ -1,4 +1,6 @@
 from django.db import models
+from django import forms
+from .images import ImagePreviewWidget
 
 
 class Sale(models.Model):
@@ -15,3 +17,12 @@ class Sale(models.Model):
         app_label = 'api'
         verbose_name = 'Акция'
         verbose_name_plural = 'Акции'
+
+
+class SaleForm(forms.ModelForm):
+    class Meta:
+        model = Sale
+        fields = '__all__'
+        widgets = {
+            'image': ImagePreviewWidget()
+        }
