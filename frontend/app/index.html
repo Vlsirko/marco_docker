@@ -14,7 +14,7 @@
     <meta name="keywords" content="{{keywords}}">
     <meta name="description" content="{{meta}}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
- 	<link rel="shortcut icon" href="components/static/favicon.png" type="image/png">
+    <link rel="shortcut icon" href="components/static/favicon.png" type="image/png">
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="bower_components/bootstrap-theme-cosmo/cosmo.min.css">
     <link rel="stylesheet" href="bower_components/responsive-slider/responsiveslides.css">
@@ -22,80 +22,86 @@
 </head>
 
 <body>
-<div class="container">
+<div ng-hide="apiConnection || apiError">Загрузка...</div>
+<div ng-show="apiError" class="alert-danger alert">Ошибка подключения к api</div>
 
-    <!--[if lt IE 7]>
-    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
-        your browser</a> to improve your experience.</p>
-    <![endif]-->
-
-    <div class="row">
-        <marco-top-sidebar></marco-top-sidebar>
-    </div>
-
-
-    <div class="row">
-        <!--Логотип-->
-        <div class="col-md-3">
-            <a href='/#/'>
-                <img id='logo' class='img-responsive' src='components/static/site/logo.png' alt='logo'>
-            </a>
-
-            <marco-sidebar></marco-sidebar>
-
-        </div>
-
-        <div class="col-md-9 fade" ng-view></div>
-    </div>
-
-
-</div>
-
-<!--сабфутер-->
-<div id='subfooter'>
+<div ng-hide="!apiConnection || apiError" ng-cloak>
     <div class="container">
-        <div class="col-md-8">
-            <div class="col-md-4" ng-repeat="cat in categories">
-                <ul>
-                    {{cat.title}}
-                    <li ng-repeat="child in cat.childrens"><a href='#/{{cat.url}}'>{{child.title}}</a></li>
 
-                </ul>
-            </div>
+        <!--[if lt IE 7]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a
+                href="http://browsehappy.com/">upgrade
+            your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div class="row">
+            <marco-top-sidebar></marco-top-sidebar>
         </div>
 
-        <div class="col-md-4">
-            <div class="col-md-12">
-                <span class="h4">Способы оплаты</span><br>
-                <a href=''><img src='components/static/site/privat24.png' width='75' height='50'></a>
-                <a href=''><img src='components/static/site/webmoney.png' width='75' height='50'></a>
-                <a href=''><img src='components/static/site/paypal-credit-cards.jpg' width='75' height='50'></a>
-                <img src='components/static/site/cash2.png' width='50' height='50'>
+
+        <div class="row">
+            <!--Логотип-->
+            <div class="col-md-3">
+                <a href='/#/'>
+                    <img id='logo' class='img-responsive' src='components/static/site/logo.png' alt='logo'>
+                </a>
+
+                <marco-sidebar></marco-sidebar>
+
             </div>
 
-            <div class="col-md-12">
-                <span class="h4">Способы доставки</span><br>
-                <a href=''><img src='components/static/site/nova_poshta.gif' width='75' height='50'></a>
-                <a href=''><img src='components/static/site/intime.jpg' width='75' height='50'></a>
-                <a href=''><img src='components/static/site/ukrposhta-logo.gif' width='75' height='50'></a>
-                <img src='components/static/site/courier.png' width='50' height='50'>
+            <div class="col-md-9 fade" ng-view></div>
+        </div>
+
+
+    </div>
+
+    <!--сабфутер-->
+    <div id='subfooter'>
+        <div class="container">
+            <div class="col-md-8">
+                <div class="col-md-4" ng-repeat="cat in categories">
+                    <ul>
+                        {{cat.title}}
+                        <li ng-repeat="child in cat.childrens"><a href='#/{{cat.url}}'>{{child.title}}</a></li>
+
+                    </ul>
+                </div>
             </div>
 
-            <!--div class="col-md-12">
-                <span class="h4">Мы в интернете</span><br>
-                <a href=''><img src='../static/site/vk.jpg' width='25' height='25'></a>
-                <a href=''><img src='../static/site/fb.png' width='25' height='25'></a>
-                <a href=''><img src='../static/site/youtube.png' width='25' height='25'></a>
-            </div-->
+            <div class="col-md-4">
+                <div class="col-md-12">
+                    <span class="h4">Способы оплаты</span><br>
+                    <a href=''><img src='components/static/site/privat24.png' width='75' height='50'></a>
+                    <a href=''><img src='components/static/site/webmoney.png' width='75' height='50'></a>
+                    <a href=''><img src='components/static/site/paypal-credit-cards.jpg' width='75' height='50'></a>
+                    <img src='components/static/site/cash2.png' width='50' height='50'>
+                </div>
 
+                <div class="col-md-12">
+                    <span class="h4">Способы доставки</span><br>
+                    <a href=''><img src='components/static/site/nova_poshta.gif' width='75' height='50'></a>
+                    <a href=''><img src='components/static/site/intime.jpg' width='75' height='50'></a>
+                    <a href=''><img src='components/static/site/ukrposhta-logo.gif' width='75' height='50'></a>
+                    <img src='components/static/site/courier.png' width='50' height='50'>
+                </div>
+
+                <!--div class="col-md-12">
+                    <span class="h4">Мы в интернете</span><br>
+                    <a href=''><img src='../static/site/vk.jpg' width='25' height='25'></a>
+                    <a href=''><img src='../static/site/fb.png' width='25' height='25'></a>
+                    <a href=''><img src='../static/site/youtube.png' width='25' height='25'></a>
+                </div-->
+
+            </div>
         </div>
     </div>
-</div>
 
-<div class="seo-text col-md-12" ng-bind="description"></div>
-<!--футер-->
-<div id='footer'>
-    2014-2015 © Все права защищены. Сайт разработано <a href=''>SirkoStudio</a>
+    <div class="seo-text col-md-12" ng-bind="description"></div>
+    <!--футер-->
+    <div id='footer'>
+        2014-2015 © Все права защищены. Сайт разработано <a href=''>SirkoStudio</a>
+    </div>
 </div>
 <!-- In production use:
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>

@@ -158,13 +158,14 @@ angular.module('MirrorStore').directive('pageSizeSelector', ['$location', functi
     }
 }]);
 
-angular.module('MirrorStore').directive('marcoSidebar', ['Category', function (Category) {
+angular.module('MirrorStore').directive('marcoSidebar', ['Category', '$rootScope', function (Category, $rootScope) {
     return {
         restrict: 'E',
         templateUrl: '/components/templates/sidebar.html',
         link: function ($scope, element, attrs) {
             Category.query().$promise.then(function (data) {
                 data = JSON.parse(JSON.stringify(data));
+                $rootScope.apiConnection = true;
                 var sortedCategories = {};
                 for (var index in data) {
                     var parentId = !data[index].parent ? 0 : data[index].parent;
@@ -183,6 +184,8 @@ angular.module('MirrorStore').directive('marcoSidebar', ['Category', function (C
                 }
 
                 $scope.categories = result;
+            }, function(){
+                $rootScope.apiError = true;
             });
         }
     }
