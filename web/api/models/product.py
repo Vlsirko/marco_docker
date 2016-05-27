@@ -1,13 +1,11 @@
 from django.db import models
-from .images import Image, ImagePreviewWidget
+from .images import Image, ImagePreviewWidget,  ImageFieldDecorator
 from .category import Category
 from .seo_block import SeoBlock
 from .sale import Sale
-from marco.settings import IMAGE_SETTINGS
 from django.contrib.contenttypes.models import ContentType
 from django import forms
 from mptt.models import TreeForeignKey
-from django.utils.html import format_html
 
 
 class Product(models.Model):
@@ -40,13 +38,14 @@ class Product(models.Model):
         return Image.objects.all().filter(object_id=self.id, content_type=content_type)
 
     @property
+    @ImageFieldDecorator()
     def title_image(self):
-        return '{0}/{1}'.format(IMAGE_SETTINGS['server_host'], self._title_image.name)
+        return self._title_image.name
 
     @property
+    @ImageFieldDecorator(html=True, height=64, width=64)
     def title_image_thumb(self):
-        return format_html(
-            '<img src="{0}/64/64/{1}" alt="thumb"/>'.format(IMAGE_SETTINGS['server_host'], self._title_image.name))
+        return self._title_image.name
 
     @property
     def seo_block(self):

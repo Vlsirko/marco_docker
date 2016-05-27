@@ -1,6 +1,6 @@
 from django.db import models
 from django import forms
-from .images import ImagePreviewWidget
+from .images import ImagePreviewWidget, ImageFieldDecorator
 
 
 class Sale(models.Model):
@@ -12,6 +12,11 @@ class Sale(models.Model):
 
     def __str__(self):
         return self.title
+
+    @property
+    @ImageFieldDecorator()
+    def thumb(self):
+        return self.image.name
 
     class Meta:
         app_label = 'api'

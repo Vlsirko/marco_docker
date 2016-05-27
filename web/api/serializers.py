@@ -30,9 +30,10 @@ class CategorySerializer(serializers.ModelSerializer):
 
 
 class SaleSerializer(serializers.ModelSerializer):
+
     class Meta:
         model = Sale
-        fields = ('title', 'description', 'image')
+        fields = ('title', 'description', 'thumb')
 
 
 class SliderSerializer(serializers.ModelSerializer):

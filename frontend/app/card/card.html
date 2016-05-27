@@ -39,7 +39,8 @@
 
     <div class="media" ng-repeat="sale in product.sales">
         <div class="media-left">
-            <img class="media-object" src="{{sale.image.thumb}}" alt="{{sale.image.thumb}}">
+
+            <marco-image class='marco-image media-object' height="64" width="64" source="{{sale.thumb}}" alt="{{sale.thumb}}"></marco-image>
         </div>
         <div class="media-body">
             <h4 class="media-heading">{{sale.title}}</h4>

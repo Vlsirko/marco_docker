@@ -3,6 +3,7 @@ from django.contrib.contenttypes.admin import GenericTabularInline
 from django.contrib.contenttypes.fields import GenericForeignKey, ContentType
 from marco.settings import IMAGE_SETTINGS
 from django import forms
+from django.utils.html import format_html
 
 
 class Image(models.Model):
@@ -63,3 +64,37 @@ class ImageInline(GenericTabularInline):
     model = Image
     extra = 0
     form = ImageForm
+
+
+class ImageFieldDecorator:
+    """
+    Декоратор который форматирует url изображения что-бы оно корректно
+    отображалось
+    """
+    def __init__(self, html=False, height='-', width='-'):
+        """
+        :param html: bool если установлен в True, вернет ссылку обернутую в тег <img>
+        :param height: int высота изображения
+        :param width: int ширина изображения
+        """
+        self.html, self.height, self.width = html, width, height
+
+    def __call__(self, decorated_func):
+
+        def decorated(field):
+            return format_html(self._make_pattern().format(**{
+                'host': IMAGE_SETTINGS['server_host'],
+                'height': self.height,
+                'width': self.width,
+                'path': decorated_func(field)
+            }))
+
+        return decorated
+
+    def _make_pattern(self):
+        pattern = '{host}/{path}'
+        if self.height != '-' or self.width != '-':
+            pattern = '{host}/{width}/{height}/{path}'
+        if self.html is True:
+            pattern = '<img src="{0}" alt="thumb"/>'.format(pattern)
+        return pattern
