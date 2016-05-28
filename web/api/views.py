@@ -1,5 +1,4 @@
-from django.shortcuts import render
-from api.serializers import ProductSerializer, SliderSerializer, CategorySerializer, OrderSerializer, UserSerializer
+from api.serializers import *
 from api.models.product import Product
 from api.models.banners import Slider
 from api.models.category import Category
@@ -9,6 +8,7 @@ from rest_framework import filters
 from api.models.pagination import ProductListPagination
 from api.models.order import Order
 from api.models.user import User
+from django.contrib.flatpages.models import FlatPage
 
 
 # Create your views here.
@@ -44,3 +44,9 @@ class OrderViewSet(viewsets.ModelViewSet):
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+
+
+class FlatPageViewSet(viewsets.ModelViewSet):
+    queryset = FlatPage.objects.all()
+    serializer_class = FlatPageSerializer
+    http_method_names = ['get']

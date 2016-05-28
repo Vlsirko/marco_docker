@@ -13,6 +13,10 @@ angular.module('services', ['ngResource'])
     .factory('Order', function ($resource) {
         return $resource('/api/order/:id/', {id: '@id'});
     })
+
+    .factory('Page', function ($resource) {
+        return $resource('/api/page/:id/', {id: '@id'});
+    })
     
     .factory('Product', function ($resource) {
         return $resource('/api/products/:slug/', {slug: '@slug'}, {

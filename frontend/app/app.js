@@ -13,7 +13,8 @@ angular.module('MirrorStore', [
     'MirrorStore.catalog',
     'MirrorStore.card',
     'MirrorStore.confirmOrder',
-    'MirrorStore.basket'
+    'MirrorStore.basket',
+    'MirrorStore.page'
 ]).config(['$routeProvider', function ($routeProvider) {
     $routeProvider.otherwise({redirectTo: '/'});
 }]).config(function($httpProvider) {

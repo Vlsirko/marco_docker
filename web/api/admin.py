@@ -7,7 +7,6 @@ from api.models.seo_block import SeoBlockInline
 from api.models.sale import Sale, SaleForm
 from api.models.order import Order, OrderInline
 from api.models.user import User
-
 from django_mptt_admin.admin import DjangoMpttAdmin
 
 
@@ -34,6 +33,7 @@ class ProductAdmin(admin.ModelAdmin):
     search_fields = ('title', 'id')
     list_display = ('title_image_thumb', 'title', 'category', 'price', 'time_add', 'enabled')
     list_display_links = ('title', 'title_image_thumb')
+
 
 class SliderAdmin(admin.ModelAdmin):
     inlines = [

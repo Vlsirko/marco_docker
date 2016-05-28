@@ -184,7 +184,7 @@ angular.module('MirrorStore').directive('marcoSidebar', ['Category', '$rootScope
                 }
 
                 $scope.categories = result;
-            }, function(){
+            }, function() {
                 $rootScope.apiError = true;
             });
         }
@@ -235,13 +235,17 @@ angular.module('MirrorStore').directive('marcoAddToCard', function($cookies){
     }
 });
 
-angular.module('MirrorStore').directive('marcoTopSidebar', function($cookies){
+angular.module('MirrorStore').directive('marcoTopSidebar', function($cookies, Page){
     return {
         restrict: 'E',
         templateUrl: '/components/templates/top-sidebar.html',
         link: function($scope, element, attrs){
 
             $scope.basket = 0;
+
+            Page.query(function (data) {
+                $scope.pages = data
+            });
 
             $scope.$watch(function(){
                 var basket = $cookies.getObject('basket');
@@ -264,5 +268,7 @@ angular.module('MirrorStore').directive('marcoTopSidebar', function($cookies){
         }
     }
 });
+
+
 
 

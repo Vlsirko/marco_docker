@@ -1,4 +1,4 @@
 <label>Количество:
-    <input type="number" class="form-control" max="99" ng-model="quantity" value="{{quantity}}">
+    <input type="number" class="form-control" max="99" ng-model="quantity" ng-value="{{quantity}}">
 </label>
 <button ng-click="addToCard()" ng-class="product.is_preorder ? 'btn disabled' : 'btn btn-primary'">В корзину</button>
