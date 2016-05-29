@@ -5,7 +5,7 @@ from api.models.images import ImageInline
 from api.models.banners import Slider
 from api.models.seo_block import SeoBlockInline
 from api.models.sale import Sale, SaleForm
-from api.models.order import Order, OrderInline
+from api.models.order import Order, ProductSetInline
 from api.models.user import User
 from django_mptt_admin.admin import DjangoMpttAdmin
 
@@ -41,6 +41,13 @@ class SliderAdmin(admin.ModelAdmin):
     ]
 
 
+class OrderAdmin(admin.ModelAdmin):
+    list_display = ('id', 'total_amount', 'status', 'basket_for_admin', 'date_add', 'comment', 'user_info')
+    inlines = (ProductSetInline,)
+    list_filter = ('status', 'delivery_method')
+    search_fields = ('id',)
+
+
 class SaleAdmin(admin.ModelAdmin):
     form = SaleForm
 
@@ -50,5 +57,5 @@ admin.site.register(Product, ProductAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Slider, SliderAdmin)
 admin.site.register(Sale, SaleAdmin)
-admin.site.register(Order, OrderInline)
+admin.site.register(Order, OrderAdmin)
 admin.site.register(User)

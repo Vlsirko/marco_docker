@@ -1,17 +1,24 @@
 angular.module('MirrorStore.page', ['ngRoute'])
 
     .config(['$routeProvider', function ($routeProvider) {
-        $routeProvider.when('/page/:id', {
-            templateUrl: 'page/page.html',
-            controller: 'pageCtrl'
+        $routeProvider.when('/page/contacts', {
+            templateUrl: 'page/contacts.html',
+            controller: 'contactsCtrl'
+        }).when('/page/delivery', {
+            templateUrl: 'page/delivery.html',
+            controller: 'deliveryCtrl'
+        }).when('/page/payments', {
+            templateUrl: 'page/payments.html',
+            controller: 'paymentsCtrl'
         });
     }])
 
-    .controller('pageCtrl', function ($rootScope, $routeParams, $scope, Page) {
+    .controller('contactsCtrl', function ($rootScope) {
+        $rootScope.title = 'MirrorStore: Контакты';
 
-        Page.get({id: $routeParams.id }, function (page) {
-            $rootScope.title =page.title;
-            $scope.page = page;
-        });
+    }).controller('deliveryCtrl', function ($rootScope) {
+        $rootScope.title = 'MirrorStore: Доставка';
 
+    }).controller('paymentsCtrl', function ($rootScope) {
+        $rootScope.title = 'MirrorStore: Оплата';
     });

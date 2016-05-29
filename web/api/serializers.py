@@ -1,5 +1,4 @@
 from rest_framework import serializers
-from django.contrib.flatpages.models import FlatPage
 from api.models.product import Product
 from api.models.category import Category
 from api.models.banners import Slider
@@ -105,8 +104,3 @@ class OrderSerializer(serializers.ModelSerializer):
 
         return order
 
-
-class FlatPageSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = FlatPage
-        fields = '__all__'

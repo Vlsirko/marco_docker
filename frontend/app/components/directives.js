@@ -235,18 +235,14 @@ angular.module('MirrorStore').directive('marcoAddToCard', function($cookies){
     }
 });
 
-angular.module('MirrorStore').directive('marcoTopSidebar', function($cookies, Page){
+angular.module('MirrorStore').directive('marcoTopSidebar', function($cookies){
     return {
         restrict: 'E',
         templateUrl: '/components/templates/top-sidebar.html',
         link: function($scope, element, attrs){
 
             $scope.basket = 0;
-
-            Page.query(function (data) {
-                $scope.pages = data
-            });
-
+            
             $scope.$watch(function(){
                 var basket = $cookies.getObject('basket');
 

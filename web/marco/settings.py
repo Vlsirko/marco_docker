@@ -38,13 +38,12 @@ USE_I18N = True
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
-    'django.contrib.sites',
-    'django.contrib.flatpages',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'api.apps.RestConfig',
+    'tinymce',
     'mptt',
     'django_mptt_admin',
     'rest_framework'

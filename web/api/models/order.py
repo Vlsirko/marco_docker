@@ -1,8 +1,10 @@
-from django.db import models
-from api.models.user import User
-from api.models.product import Product
 from django.contrib import admin
+from django.db import models
 from django.db.models import Sum
+from api.models.product import Product
+from api.models.user import User
+from django.core import urlresolvers
+from django.utils.html import format_html
 
 
 class Order(models.Model):
@@ -50,6 +52,30 @@ class Order(models.Model):
             result[line.product.id] = line.quantity
         return result
 
+    @property
+    def basket_for_admin(self):
+        """
+        Возвращает html для представления корзины в админке
+        """
+        basket = self.basket
+        products = self.product_set.all()
+        html = '<ul>'
+        pattern = '<li>{src}<a href="{href}">{title}</a> x {count}</li>'
+        for product in products:
+            html += pattern.format(**{
+                'src': product.title_image_thumb,
+                'href': urlresolvers.reverse('admin:api_product_change', args=(product.id, ), current_app='api'),
+                'title': product.title,
+                'count': basket.get(product.id)
+            })
+        html += '</ul>'
+        return format_html(html)
+
+    @property
+    def user_info(self):
+        user = self.user
+        return format_html('<br> '.join((user.name, user.email, user.phone)))
+
     def __str__(self):
         return 'Заказ №{}'.format(self.id)
 
@@ -70,8 +96,4 @@ class ProductSet(models.Model):
 
 class ProductSetInline(admin.TabularInline):
     model = ProductSet
-    extra = 1
-
-
-class OrderInline(admin.ModelAdmin):
-    inlines = (ProductSetInline,)
+    extra = 0

@@ -1,11 +1,12 @@
-from django.db import models
-from .images import Image, ImagePreviewWidget,  ImageFieldDecorator
-from .category import Category
-from .seo_block import SeoBlock
-from .sale import Sale
-from django.contrib.contenttypes.models import ContentType
 from django import forms
+from django.contrib.contenttypes.models import ContentType
+from django.db import models
 from mptt.models import TreeForeignKey
+from tinymce import models as tiny_mce_model
+from .category import Category
+from .images import Image, ImagePreviewWidget, ImageFieldDecorator
+from .sale import Sale
+from .seo_block import SeoBlock
 
 
 class Product(models.Model):
@@ -14,7 +15,7 @@ class Product(models.Model):
     url = models.CharField(max_length=255, verbose_name='Транслитерация', unique=True)
     category = TreeForeignKey(Category, related_name='category', on_delete=models.SET_NULL,
                               null=True, verbose_name='Категория')
-    description = models.TextField(verbose_name='Описание товара', blank=True)
+    description = tiny_mce_model.HTMLField(verbose_name='Описание товара', blank=True)
 
     _title_image = models.ImageField(upload_to='product/img/%Y/%m/%d/', verbose_name='Главное изображение')
 
