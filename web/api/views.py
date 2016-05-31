@@ -3,11 +3,12 @@ from api.models.product import Product
 from api.models.banners import Slider
 from api.models.category import Category
 from api.models.filters import ProductFilter
-from rest_framework import viewsets
-from rest_framework import filters
+from rest_framework import viewsets, filters, views, response, status
 from api.models.pagination import ProductListPagination
 from api.models.order import Order
 from api.models.user import User
+from django.core.mail import send_mail
+from smtplib import SMTPException
 
 
 # Create your views here.
@@ -43,3 +44,18 @@ class OrderViewSet(viewsets.ModelViewSet):
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+
+
+class EmailView(views.APIView):
+    def post(self, request, *args, **kwargs):
+        user_email = request.data.get('email')
+        email_theme = request.data.get('theme')
+        from_who = request.data.get('from')
+        body = request.data.get('body')
+
+        try:
+            send_mail(email_theme, '', from_who, [user_email], html_message=body, fail_silently=False)
+        except SMTPException:
+            return response.Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+        return response.Response({'success': True}, status=status.HTTP_201_CREATED)

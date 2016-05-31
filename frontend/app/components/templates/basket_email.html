@@ -1,0 +1,25 @@
+<table>
+    <tr>
+        <td colspan="5">
+            Заказ №{{order.id}}
+        </td>
+    </tr>
+
+    <tr ng-repeat="product in order.product_set">
+        <td>
+           <marco-image height="64" width="64" resource="product.title_image"></marco-image>
+        </td>
+
+        <td>
+            {{product.title}}
+        </td>
+
+        <td>
+            {{order.basket[product.id]}}
+        </td>
+
+        <td>
+            {{product.price * order.basket[product.id]}} грн
+        </td>
+    </tr>
+</table>

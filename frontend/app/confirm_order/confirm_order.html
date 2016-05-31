@@ -21,9 +21,7 @@
 
         <div class="form-group">
             <label for="email">Способ доставки</label>
-            <select ng-model="defaultMethod" class="form-control">
-                <option ng-repeat="(index, opt) in deliveryMethods" value="{{index}}">{{opt}}</option>
-            </select>
+            <select ng-model="defaultMethod" class="form-control" ng-options="opt.title for opt in deliveryMethods track by opt.id"></select>
         </div>
 
         <div class="form-group">

@@ -17,6 +17,14 @@ angular.module('services', ['ngResource'])
     .factory('Page', function ($resource) {
         return $resource('/api/page/:id/', {id: '@id'});
     })
+
+    .factory('Email', function ($resource) {
+        return $resource('/api/email/', {}, {
+            'send': {
+                method: 'POST'
+            }
+        });
+    })
     
     .factory('Product', function ($resource) {
         return $resource('/api/products/:slug/', {slug: '@slug'}, {

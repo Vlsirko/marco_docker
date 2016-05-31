@@ -84,10 +84,11 @@ class OrderSerializer(serializers.ModelSerializer):
     """
     basket = serializers.DictField(required=True)
     user = UserSerializer(required=True, partial=True)
+    product_set = ProductSerializer(many=True, read_only=True)
 
     class Meta:
         model = Order
-        fields = ('id', 'user', 'status', 'basket', 'total_amount', 'comment', 'delivery_method', 'comment_admin')
+        fields = ('id', 'user', 'status', 'basket', 'product_set', 'total_amount', 'comment', 'delivery_method', 'comment_admin')
         read_only_fields = ('comment_admin',)
 
     def create(self, validated_data):
