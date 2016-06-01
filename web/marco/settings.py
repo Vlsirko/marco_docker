@@ -58,7 +58,8 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'marco.admin_locale.AdminLocaleMiddleware'
+    'marco.admin_locale.AdminLocaleMiddleware',
+    'django.middleware.cache.CacheMiddleware'
 ]
 
 ROOT_URLCONF = 'marco.urls'
@@ -150,6 +151,8 @@ IMAGE_SETTINGS = {
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-        'LOCATION': 'memcached',
+        'LOCATION': 'memcached:11211',
     }
 }
+
+CACHE_MIDDLEWARE_SECONDS = 0
