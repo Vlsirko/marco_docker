@@ -144,7 +144,5 @@ REST_FRAMEWORK = {
 
 IMAGE_SETTINGS = {
     'server_host': 'http://i.marco.dev',
+    'no_image': 'noimage.png'
 }
-
-EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
-EMAIL_FILE_PATH = '/web/app-messages'

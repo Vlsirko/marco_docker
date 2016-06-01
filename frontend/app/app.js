@@ -17,17 +17,17 @@ angular.module('MirrorStore', [
     'MirrorStore.page'
 ]).config(['$routeProvider', function ($routeProvider) {
     $routeProvider.otherwise({redirectTo: '/'});
-}]).config(function($httpProvider) {
-    $httpProvider.interceptors.push(function($q) {
+}]).config(function ($httpProvider) {
+    $httpProvider.interceptors.push(function ($q) {
         var realEncodeURIComponent = window.encodeURIComponent;
         return {
-            'request': function(config) {
-                window.encodeURIComponent = function(input) {
+            'request': function (config) {
+                window.encodeURIComponent = function (input) {
                     return realEncodeURIComponent(input).split("%2B").join("+");
                 };
                 return config || $q.when(config);
             },
-            'response': function(config) {
+            'response': function (config) {
                 window.encodeURIComponent = realEncodeURIComponent;
                 return config || $q.when(config);
             }
@@ -36,6 +36,16 @@ angular.module('MirrorStore', [
 
     $httpProvider.defaults.xsrfCookieName = 'csrftoken';
     $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
+});
+
+angular.module('MirrorStore').constant('MirrorStoreConfig', {
+    'site': 'http://mirrorstore.com',
+    'emails': {
+        'admins': [
+            'Vlsirko89@gmail.com'
+        ],
+        'email_from': 'MirrorStore'
+    }
 });
 
 

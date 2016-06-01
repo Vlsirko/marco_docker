@@ -50,7 +50,7 @@ angular.module('services', ['ngResource'])
             'getByCategorySlug': {
                 method: 'GET',
                 params: {
-                    category__url: '@category_url'
+                    category__id: '@category_id'
                 }
             }
         });

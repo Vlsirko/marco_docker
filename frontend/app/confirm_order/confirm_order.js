@@ -2,7 +2,7 @@
 
 angular.module('MirrorStore.confirmOrder', [])
 
-    .controller('confirmOrderCtrl', function ($scope, $uibModalInstance, $cookies, Order, $location, Email, $templateRequest, $compile) {
+    .controller('confirmOrderCtrl', function ($scope, $uibModalInstance, $cookies, Order, $location, Email, $templateRequest, $compile, $timeout, MirrorStoreConfig) {
         $scope.close = $uibModalInstance.close;
 
         $scope.user = {};
@@ -16,35 +16,39 @@ angular.module('MirrorStore.confirmOrder', [])
 
         $scope.defaultMethod = $scope.deliveryMethods[0];
 
-        $scope.confirmOrder = function(){
+        $scope.confirmOrder = function () {
             Order.save({
                 user: $scope.user,
                 basket: $cookies.getObject('basket'),
                 comment: $scope.comment,
                 delivery_method: $scope.defaultMethod.id
-            }, function(data){
+            }, function (data) {
 
-                $templateRequest('/components/templates/basket_email.html').then(function(template){
-
-                    var body = angular.element('<div></div>');
+                $templateRequest('/components/templates/basket_email.html').then(function (template) {
                     $scope.order = data;
-                    console.log(body.append($compile(template)($scope)).html());
+                    $scope.site = MirrorStoreConfig.site;
+                    var compiled = $compile(template)($scope);
+                    $timeout(function(){
 
-                  /*  Email.send({
-                        'email': data.user.email,
-                        'from': 'MirrorStore',
-                        'theme': 'Заказ№' + data.id,
-                        'body': $compile(body)($scope).html()
-                    });*/
+                        Email.send({
+                            'email': [data.user.email].concat(MirrorStoreConfig.emails.admins),
+                            'from': MirrorStoreConfig.emails.from,
+                            'theme': 'Заказ№' + data.id,
+                            'body': compiled[0].outerHTML
+                        });
+
+                        alert('Заказ успешно оформлен');
+                        $cookies.remove('basket');
+                        $uibModalInstance.close();
+                        $location.hash('basket');
+
+                    }, 300)
+
                 });
 
 
 
-                alert('Заказ успешно оформлен');
-                $cookies.remove('basket');
-                $uibModalInstance.close();
-                $location.hash('basket');
-            }, function(){
+            }, function () {
                 alert('error')
             });
         }

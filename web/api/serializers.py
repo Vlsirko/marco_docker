@@ -85,6 +85,7 @@ class OrderSerializer(serializers.ModelSerializer):
     basket = serializers.DictField(required=True)
     user = UserSerializer(required=True, partial=True)
     product_set = ProductSerializer(many=True, read_only=True)
+    delivery_method = serializers.ChoiceField(choices=Order.DELIVERY_METHODS, default=Order.DELIVERY_METHODS[0])
 
     class Meta:
         model = Order

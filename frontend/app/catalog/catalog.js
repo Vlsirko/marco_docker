@@ -23,7 +23,7 @@ angular.module('MirrorStore.catalog', ['ngRoute'])
             $rootScope.keywords = data.seo_block.keywords;
 
             Product.getByCategorySlug({
-                category: data.id,
+                category__id: data.id,
                 ordering: $scope.ordering,
                 page_size: $scope.pageSize,
                 page: page

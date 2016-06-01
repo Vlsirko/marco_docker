@@ -1,25 +1,44 @@
-<table>
-    <tr>
-        <td colspan="5">
-            Заказ №{{order.id}}
-        </td>
-    </tr>
+<div style='width:100%'>
+    <table style='width:80%; margin:auto; border-collapse: collapse; border: none;'>
 
-    <tr ng-repeat="product in order.product_set">
-        <td>
-           <marco-image height="64" width="64" resource="product.title_image"></marco-image>
-        </td>
+        <tr>
+            <td colspan="5" style="padding:10px">
+                Здравствуйте {{order.user.name}}. Спасибо, что выбрали нас!
+                <br /> <b>Ваш заказ №{{order.id}}</b>
+            </td>
+        </tr>
 
-        <td>
-            {{product.title}}
-        </td>
+        <tr ng-repeat="product in order.product_set">
+            <td style="padding:10px; width:64px">
+               <marco-image height="64" width="64" source="{{product.title_image}}"></marco-image>
+            </td>
 
-        <td>
-            {{order.basket[product.id]}}
-        </td>
+            <td style="padding:10px">
+                {{product.title}}
+            </td>
 
-        <td>
-            {{product.price * order.basket[product.id]}} грн
-        </td>
-    </tr>
-</table>
+            <td style="padding:10px">
+                x {{order.basket[product.id]}}
+            </td>
+
+            <td style="padding:10px">
+                {{product.price * order.basket[product.id]}} грн
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="5" style="padding:10px; text-align: right">
+                Общая стоимость: {{order.total_amount}} грн
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="5" style="padding:10px;">
+                Мы свяжемся с вами в ближайшее время для уточнения деталей.<br>
+                С уважением <a href="{{site}}">MirrorStore</a>
+            </td>
+        </tr>
+
+
+    </table>
+</div>

@@ -82,11 +82,17 @@ class ImageFieldDecorator:
     def __call__(self, decorated_func):
 
         def decorated(field):
+
+            image_path = decorated_func(field)
+
+            if not image_path:
+                image_path = IMAGE_SETTINGS['no_image']
+
             return format_html(self._make_pattern().format(**{
                 'host': IMAGE_SETTINGS['server_host'],
                 'height': self.height,
                 'width': self.width,
-                'path': decorated_func(field)
+                'path': image_path
             }))
 
         return decorated
