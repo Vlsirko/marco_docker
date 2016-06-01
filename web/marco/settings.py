@@ -146,3 +146,10 @@ IMAGE_SETTINGS = {
     'server_host': 'http://i.marco.dev',
     'no_image': 'noimage.png'
 }
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': 'memcached',
+    }
+}

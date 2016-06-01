@@ -11,6 +11,7 @@ services:
       - "8000:8000"
     depends_on:
       - db
+      - memcached
   db:
     image: mysql
     volumes:
@@ -36,6 +37,10 @@ services:
      - web
     links:
      - web:web
+  memcached:
+    image: memcached
+    ports:
+      - "11211:11211"
 
 
 
