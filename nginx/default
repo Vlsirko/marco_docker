@@ -6,12 +6,19 @@ server {
     listen 80;
     server_name marco.dev; #либо ip, либо доменное имя
     access_log  /var/log/nginx/example.log;
+    recursive_error_pages on;
 
-    root /frontend/app;
     charset utf-8;
 
     location / {
+        set            $memcached_key "$uri?$args";
+        memcached_pass memcached:11211;
+        error_page     404 502 504 = @angular;
+    }
+
+    location @angular {
         include /etc/nginx/mime.types;
+        root /frontend/app;
         try_files $uri /index.html?$query_string;
     }
 

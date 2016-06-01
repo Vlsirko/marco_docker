@@ -37,6 +37,8 @@ services:
      - web
     links:
      - web:web
+     - memcached:memcached
+
   memcached:
     image: memcached
     ports:
