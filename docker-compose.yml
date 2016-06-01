@@ -33,6 +33,7 @@ services:
     volumes:
      - ./frontend:/frontend
      - ./nginx/default:/etc/nginx/conf.d/default.conf
+     - ./nginx/cache:/var/nginx/cache
     volumes_from:
      - web
     links:

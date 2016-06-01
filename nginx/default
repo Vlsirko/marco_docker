@@ -1,3 +1,5 @@
+proxy_cache_path /var/nginx/cache levels=1:2 keys_zone=thumbs:10m inactive=24h max_size=5G;
+
 upstream django {
     server unix:///web/marco1.sock;
 }
@@ -10,39 +12,85 @@ server {
 
     charset utf-8;
 
-    location / {
-        set            $memcached_key "$uri?$args";
-        memcached_pass memcached:11211;
-        error_page     404 502 504 = @angular;
-    }
+    root /frontend/app;
 
-    location @angular {
+    location / {
         include /etc/nginx/mime.types;
-        root /frontend/app;
         try_files $uri /index.html?$query_string;
     }
 
     location /s {
-        alias /static;
+        proxy_pass http://localhost:8083;
     }
 
-    location ~/(admin|api) {
+    location /admin {
+        proxy_pass http://localhost:8082;
+    }
+
+    location /api {
+        proxy_pass http://localhost:8084;
+    }
+
+     location ~/[^s]\.(jpg|jpeg|png|gif|swf|svg|ico|mp4|eot|ttf|otf|woff|woff2|css|js)$ {
+        add_header Cache-Control "max-age=86400, must-revalidate, s-maxage=2592000";
+     }
+
+}
+
+#admin server
+server {
+     listen 8082;
+
+     location /admin  {
         uwsgi_pass  django;
         include     /web/marco/uwsgi_params;
     }
 }
 
+#api server
+server {
+     listen 8084;
+     location /api  {
+        uwsgi_pass  django;
+        include     /web/marco/uwsgi_params;
+    }
+}
+
+#static server
+server {
+     listen 8083;
+
+     location /s {
+        alias /static;
+    }
+}
+
+
+#image server
 server {
     server_name i.marco.dev;
+
+    root /media;
+
+    location ~ /(?:\d+|-)/(?:\d+|-) {
+        proxy_pass http://localhost:8081;
+        proxy_cache thumbs;
+        proxy_cache_valid  200      24h;
+        proxy_cache_valid  404 415  0;
+    }
+
+    location / {
+
+    }
+}
+
+server {
+    listen 8081;
     root /media;
 
     if ($uri ~ ^/(\d+|-)/(\d+|-)/) {
         set $h $1;
         set $w $2;
-    }
-
-    location / {
-
     }
 
     location ~ ^/(?:\d+|-)/(?:\d+|-)/.*\.(?:jpg|gif|png)$ {
