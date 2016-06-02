@@ -2,16 +2,21 @@ version: '2'
 services:
   web:
     build: ./web
-    command: uwsgi --socket marco1.sock --module marco.wsgi --chmod-socket=666
+    command: bash -c "cat /web/cron.config >> /etc/crontab && uwsgi --socket marco1.sock --module marco.wsgi --chmod-socket=666"
+      #-
     volumes:
       - ./web:/web
       - ./media:/media
       - ./static:/static
+      - ./log:/log
+      - ./backup:/backup
     ports:
       - "8000:8000"
     depends_on:
       - db
       - memcached
+
+
   db:
     image: mysql
     volumes:

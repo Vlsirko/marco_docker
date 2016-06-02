@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'tinymce',
     'mptt',
     'django_mptt_admin',
-    'rest_framework'
+    'rest_framework',
+    'dbbackup'
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -122,8 +123,6 @@ LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
 
-USE_I18N = True
-
 USE_L10N = True
 
 USE_TZ = True
@@ -158,3 +157,29 @@ CACHES = {
         }
     }
 }
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'debug_file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': '/log/debug.log'
+        },
+        'error_file': {
+            'level': 'ERROR',
+            'class': 'logging.FileHandler',
+            'filename': '/log/error.log'
+        },
+        'admin_email': {
+            'level': 'ERROR',
+            'class': 'django.utils.log.AdminEmailHandler',
+            'include_html': True
+        }
+    }
+}
+
+DBBACKUP_STORAGE = 'dbbackup.storage.filesystem_storage'
+DBBACKUP_BACKUP_DIRECTORY = '/backup/'
+DBBACKUP_MEDIA_PATH = MEDIA_ROOT
