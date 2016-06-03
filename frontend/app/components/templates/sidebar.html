@@ -3,11 +3,11 @@
     <ul ng-if="categories">
         <!--Категоря одежда-->
         <li ng-repeat="cat in categories">
-            <span class="title-menu">{{cat.title}}</span>
+            <span class="title-menu">{{::cat.title}}</span>
             <!--Подкатегории-->
             <ul>
                 <li ng-repeat="childCat in cat.childrens">
-                    <a href='#/c/{{childCat.url}}'>{{childCat.title}}</a>
+                    <a href='#/{{::cat.url}}/{{::childCat.url}}'>{{::childCat.title}}</a>
                 </li>
             </ul>
         </li>

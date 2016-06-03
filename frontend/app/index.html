@@ -25,7 +25,7 @@
 <div ng-hide="apiConnection || apiError">Загрузка...</div>
 <div ng-show="apiError" class="alert-danger alert">Ошибка подключения к api</div>
 
-<div ng-hide="!apiConnection || apiError" ng-cloak>
+<div class="main" ng-hide="!apiConnection || apiError" ng-cloak>
     <div class="container">
 
         <!--[if lt IE 7]>
@@ -52,52 +52,25 @@
 
             <div class="col-md-9 fade" ng-view></div>
         </div>
-
-        <div class="seo-text col-md-12" ng-bind="description"></div>
     </div>
 
-    <!--сабфутер-->
-    <div id='subfooter'>
-        <div class="container">
-            <div class="col-md-8">
-                <div class="col-md-4" ng-repeat="cat in categories">
-                    <ul>
-                        {{cat.title}}
-                        <li ng-repeat="child in cat.childrens"><a href='#/{{cat.url}}'>{{child.title}}</a></li>
-
-                    </ul>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="col-md-12">
-                    <span class="h4">Способы оплаты</span><br>
-                    <a href=''><img src='components/static/site/privat24.png' width='75' height='50'></a>
-                    <a href=''><img src='components/static/site/webmoney.png' width='75' height='50'></a>
-                    <a href=''><img src='components/static/site/paypal-credit-cards.jpg' width='75' height='50'></a>
-                    <img src='components/static/site/cash2.png' width='50' height='50'>
-                </div>
-
-                <div class="col-md-12">
-                    <span class="h4">Способы доставки</span><br>
-                    <a href=''><img src='components/static/site/nova_poshta.gif' width='75' height='50'></a>
-                    <a href=''><img src='components/static/site/intime.jpg' width='75' height='50'></a>
-                    <a href=''><img src='components/static/site/ukrposhta-logo.gif' width='75' height='50'></a>
-                    <img src='components/static/site/courier.png' width='50' height='50'>
-                </div>
-
-                <!--div class="col-md-12">
-                    <span class="h4">Мы в интернете</span><br>
-                    <a href=''><img src='../static/site/vk.jpg' width='25' height='25'></a>
-                    <a href=''><img src='../static/site/fb.png' width='25' height='25'></a>
-                    <a href=''><img src='../static/site/youtube.png' width='25' height='25'></a>
-                </div-->
-
-            </div>
-        </div>
-    </div>
     <!--футер-->
-    <div id='footer'>
+
+</div>
+
+<div id='footer'>
+    <div class="container">
+        <div class="col-md-9">
+            <ul class="nav nav-pills">
+                <li class=""><a href="#/">Главная</a></li>
+                <li class=""><a href="#/payments">Оплата</a></li>
+                <li class=""><a href="#/delivery">Доставка</a></li>
+                <li class=""><a href="#/contacts">Контакты</a></li>
+            </ul>
+        </div>
+
+    </div>
+    <div id="bottom">
         2014-2015 © Все права защищены. Сайт разработано <a href=''>SirkoStudio</a>
     </div>
 </div>

@@ -9,12 +9,13 @@ angular.module('MirrorStore.basket', ['ngRoute'])
         });
     }])
 
-    .controller('basketCtrl', function($scope, $routeParams, Product, $cookies, Order, $uibModal) {
+    .controller('basketCtrl', function($rootScope, $scope, $routeParams, Product, $cookies, Order, $uibModal) {
         $scope.basket = $cookies.getObject('basket') ? $cookies.getObject('basket') : {};
         $scope.empty = Object.keys($scope.basket).length === 0;
         $scope.amount = 0;
 
-
+        $rootScope.title = 'MirrorStore: Корзина';
+        
         if(!$scope.empty) {
 
            Product.get({ids: Object.keys($scope.basket).join(',')}, function (data) {

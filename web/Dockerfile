@@ -12,7 +12,8 @@ RUN pip install django \
             djangorestframework-filters \
             django-tinymce \
             python-memcached \
-            django-dbbackup
+            django-dbbackup \
+            djangorestframework-recursive
 ADD . /web
 RUN cat cron.config >> /etc/crontab
 RUN cron

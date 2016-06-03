@@ -1,12 +1,19 @@
-<div id='catalogParams'>
-    <div class="pull-right">
-        <ordering-selector field="{{ordering}}"></ordering-selector>
-        <page-size-selector></page-size-selector>
+<div ng-show="products.length > 0">
+    <div id='catalogParams'>
+        <div class="pull-right">
+            <ordering-selector field="{{::ordering}}"></ordering-selector>
+            <page-size-selector></page-size-selector>
+        </div>
+    </div>
+
+    <div class="row index">
+        <div ng-include="'/components/templates/product.html'" ng-repeat="product in products"></div>
+    </div>
+
+    <marco-pagination page="[{{currPage}}, {{pagesCount}}]"></marco-pagination>
+    <div class="row">
+        <div class="col-md-9" ng-bind="description"></div>
     </div>
 </div>
 
-<div class="row index">
-    <div ng-include="'/components/templates/product.html'" ng-repeat="product in products"></div>
-</div>
-
-<marco-pagination page="[{{currPage}}, {{pagesCount}}]"></marco-pagination>
+<div ng-show="products.length == 0" class="alert alert-success">Тут пусто</div>

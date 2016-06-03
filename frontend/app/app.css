@@ -2,6 +2,16 @@
     font-size: 12px;
 }
 
+html, body{
+    height: 100%;
+}
+
+.main{
+    position: relative;
+    min-height: 100%;
+    padding-bottom: 10em;
+}
+
 .row{
     margin-top: 1em;
 }
@@ -256,39 +266,21 @@ a.grey{
     margin-bottom: 2px;
 }
 
-#subfooter{
-    background-color:#dedede;
-    overflow:hidden;
-    padding:1.5em;
-}
-
-#subfooter ul {
-    list-style: none;
-}
-
-#subfooter li a{
-    text-decoration:none;
-    color:#6e6e6e;
-    margin:1em;
-}
-
-#subfooter li a:hover{
-    text-decoration:underline;
-}
 
 
-#info img{
-    margin-left:10px;
-}
 
 #footer{
-    margin-top:-25px;
-    height:25px;
-    background-color:#474747;
-    text-align:center;
-    line-height:25px;
+    margin-top: -4em;
+    height: 4em;
 }
-#footer a{
+
+#footer #bottom{
+    margin-top:1em;
+    background-color: #474747;
+    text-align: center;
+    line-height: 2em;
+}
+#footer #bottom a{
     color:#3281c3;
     text-decoration:none;
 }
@@ -408,10 +400,6 @@ a.grey{
 .remove{
     color:red;
     cursor: pointer;
-}
-
-.basket{
-    min-height:50em;
 }
 
 .basket table td {

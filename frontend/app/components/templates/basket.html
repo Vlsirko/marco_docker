@@ -5,16 +5,16 @@
             <tr ng-repeat="product in products" ng-show="basket[product.id]">
                 <td class="2">
                     <marco-image class='marco-image img-responsive' height="64" width="64"
-                                 source="{{product.title_image.path}}" alt="{{product.title_image.title}}"></marco-image>
+                                 source="{{::product.title_image.path}}" alt="{{::product.title_image.title}}"></marco-image>
                 </td>
                 <td>{{product.title}}</td>
                 <td class="col-md-2"><input ng-change="changeQuantity()" class="form-control" min="1" max="99" type="number" ng-model="basket[product.id]"/></td>
-                <td class="col-md-2">{{product.price * basket[product.id]}} грн</td>
+                <td class="col-md-2">{{::product.price * basket[product.id]}} грн</td>
                 <td class="col-md-1"><i class="glyphicon glyphicon-remove remove" ng-click="removeFromCard(product.id)"></i></td>
             </tr>
         </table>
         <div class="row text-right">
-            <span class="h4">Итого: {{amount}} грн</span>
+            <span class="h4">Итого: {{::amount}} грн</span>
         </div>
         <div class="row pull-right">
             <button ng-click="clearBasket()" class="btn btn-default">Очистить</button>

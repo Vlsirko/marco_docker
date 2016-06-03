@@ -1,7 +1,21 @@
-<ul class="nav nav-pills pull-right">
-    <li role="presentation"><a href="#/">Главная</a></li>
-    <li role="presentation"><a href="#/page/payments">Оплата</a></li>
-    <li role="presentation"><a href="#/page/delivery">Доставка</a></li>
-    <li role="presentation"><a href="#/page/contacts">Контакты</a></li>
-    <li role="presentation"><a href="#/basket">Корзина <span ng-show="basket" class="label label-danger">{{basket}}</span></a></li>
-</ul>
+<div class="col-md-9">
+    <ul class="nav nav-pills pull-left">
+        <li role="presentation"><a href="#/">Главная</a></li>
+        <li role="presentation"><a href="#/payments">Оплата</a></li>
+        <li role="presentation"><a href="#/delivery">Доставка</a></li>
+        <li role="presentation"><a href="#/contacts">Контакты</a></li>
+        <li role="presentation"><a href="#/basket">Корзина <span ng-show="basket"
+                                                                 class="label label-danger">{{basket}}</span></a></li>
+    </ul>
+</div>
+
+<div class="col-md-3">
+    <div class="input-group pull-right">
+        <div class="input-group">
+            <input ng-model="search" ng-blur="findProducts()" type="text" class="form-control input-sm">
+            <span class="input-group-addon input-sm"><i class="glyphicon glyphicon-search"></i></span>
+        </div>
+    </div>
+</div>
+
+

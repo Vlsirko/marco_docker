@@ -3,7 +3,7 @@
     <div class="rslides_container" ng-if="slides.length > 0">
         <ul class="rslides" id="slider1">
             <li rs-slider ng-repeat="image in slides">
-                <marco-image height="400" width="800" source="{{image.path}}" alt="{{image.title}}"></marco-image>
+                <marco-image height="400" width="800" source="{{::image.path}}" alt="{{::image.title}}"></marco-image>
             </li>
         </ul>
     </div>
@@ -31,5 +31,5 @@
     </div>
 </div>
 
-
+    <div class="col-md-9" ng-bind="description"></div>
 </div>

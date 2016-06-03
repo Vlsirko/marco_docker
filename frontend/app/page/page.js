@@ -1,13 +1,13 @@
 angular.module('MirrorStore.page', ['ngRoute'])
 
     .config(['$routeProvider', function ($routeProvider) {
-        $routeProvider.when('/page/contacts', {
+        $routeProvider.when('/contacts', {
             templateUrl: 'page/contacts.html',
             controller: 'contactsCtrl'
-        }).when('/page/delivery', {
+        }).when('/delivery', {
             templateUrl: 'page/delivery.html',
             controller: 'deliveryCtrl'
-        }).when('/page/payments', {
+        }).when('/payments', {
             templateUrl: 'page/payments.html',
             controller: 'paymentsCtrl'
         });

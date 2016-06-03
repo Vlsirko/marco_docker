@@ -7,6 +7,7 @@ from api.models.images import Image
 from api.models.order import Order, ProductSet
 from api.models.user import User
 from api.models.seo_block import SeoBlock
+from rest_framework_recursive.fields import RecursiveField
 
 
 class ImageSerializer(serializers.ModelSerializer):
@@ -23,6 +24,7 @@ class SeoBlockSerializer(serializers.ModelSerializer):
 
 class CategorySerializer(serializers.ModelSerializer):
     seo_block = SeoBlockSerializer(many=False)
+    parent = RecursiveField(many=False, allow_null=True)
 
     class Meta:
         model = Category
@@ -89,7 +91,8 @@ class OrderSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Order
-        fields = ('id', 'user', 'status', 'basket', 'product_set', 'total_amount', 'comment', 'delivery_method', 'comment_admin')
+        fields = (
+        'id', 'user', 'status', 'basket', 'product_set', 'total_amount', 'comment', 'delivery_method', 'comment_admin')
         read_only_fields = ('comment_admin',)
 
     def create(self, validated_data):
@@ -105,4 +108,3 @@ class OrderSerializer(serializers.ModelSerializer):
                 ProductSet.objects.create(order=order, product=product, quantity=basket[product_id])
 
         return order
-

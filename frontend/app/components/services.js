@@ -52,6 +52,13 @@ angular.module('services', ['ngResource'])
                 params: {
                     category__id: '@category_id'
                 }
+            },
+
+            'search': {
+                method: 'GET',
+                params: {
+                    search: '@search'
+                }
             }
         });
     })

@@ -17,10 +17,11 @@ class ProductViewSet(viewsets.ModelViewSet):
     serializer_class = ProductSerializer
     pagination_class = ProductListPagination
     http_method_names = ['get']
-    filter_backends = (filters.DjangoFilterBackend, filters.OrderingFilter)
+    filter_backends = (filters.DjangoFilterBackend, filters.OrderingFilter, filters.SearchFilter)
     filter_class = ProductFilter
     ordering_fields = ('time_add', 'price', 'is_preorder', 'title')
     lookup_field = 'url'
+    search_fields = ('title',)
 
 
 class SliderViewSet(viewsets.ModelViewSet):

@@ -1,13 +1,13 @@
 <div class="row block-margin">
 
     <div class='col-md-5 col-sm-6 col-xs-12'>
-        <marco-image class='marco-image img-responsive' height="480" width="320" source="{{product.title_image}}" alt="{{product.title_image}}"></marco-image>
+        <marco-image class='marco-image img-responsive' height="480" width="320" source="{{::product.title_image}}" alt="{{::product.title_image}}"></marco-image>
     </div>
 
     <div class="col-md-7 col-sm-6  col-xs-12">
         <div id='productInfo'>
             <div class="col-md-12">
-                <h1>{{product.title}}</h1>
+                <h1>{{::product.title}}</h1>
             </div>
             <div class="col-md-12 product-card-status">
                 <span ng-if="product.is_new" class="label label-success label">Новинка</span>
@@ -16,12 +16,12 @@
             </div>
             <div class="col-md-12">
                 <span>Наличие: {{product.is_preorder? 'нет' : 'есть'}}  в наличии</span>
-                <span class='price'>Цена: {{product.price}} грн</span>
+                <span class='price'>Цена: {{::product.price}} грн</span>
             </div>
 
             <div class="col-md-12 form-inline buy-widget">
                 <div class="form-group">
-                   <marco-add-to-card id="{{product.id}}"></marco-add-to-card>
+                   <marco-add-to-card id="{{::product.id}}"></marco-add-to-card>
                 </div>
             </div>
 
@@ -40,16 +40,17 @@
     <div class="media" ng-repeat="sale in product.sales">
         <div class="media-left">
 
-            <marco-image class='marco-image media-object' height="64" width="64" source="{{sale.thumb}}" alt="{{sale.thumb}}"></marco-image>
+            <marco-image class='marco-image media-object' height="64" width="64" source="{{::sale.thumb}}" alt="{{::sale.thumb}}"></marco-image>
         </div>
         <div class="media-body">
-            <h4 class="media-heading">{{sale.title}}</h4>
-            {{sale.description}}
+            <h4 class="media-heading">{{::sale.title}}</h4>
+            {{::sale.description}}
         </div>
     </div>
 
 </div>
 <div class="col-md-12 block-margin marco-gallery" ng-if="product.gallery.length>0">
     <span class="h3">Изображения товара:</span>
-    <marco-image ng-repeat="image in product.gallery" class='marco-image img-responsive' height="640" width="480" source="{{image.path}}" alt="{{image.title}}"></marco-image>
+    <marco-image ng-repeat="image in product.gallery" class='marco-image img-responsive' height="640" width="480" source="{{::image.path}}" alt="{{::image.title}}"></marco-image>
 </div>
+<div class="col-md-9" ng-bind="description"></div>

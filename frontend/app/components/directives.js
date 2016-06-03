@@ -168,7 +168,7 @@ angular.module('MirrorStore').directive('marcoSidebar', ['Category', '$rootScope
                 $rootScope.apiConnection = true;
                 var sortedCategories = {};
                 for (var index in data) {
-                    var parentId = !data[index].parent ? 0 : data[index].parent;
+                    var parentId = !data[index].parent ? 0 : data[index].parent.id;
                     if (!sortedCategories[parentId]) {
                         sortedCategories[parentId] = [];
                     }
@@ -235,7 +235,7 @@ angular.module('MirrorStore').directive('marcoAddToCard', function($cookies){
     }
 });
 
-angular.module('MirrorStore').directive('marcoTopSidebar', function($cookies){
+angular.module('MirrorStore').directive('marcoTopSidebar', function($cookies, $location){
     return {
         restrict: 'E',
         templateUrl: '/components/templates/top-sidebar.html',
@@ -261,9 +261,17 @@ angular.module('MirrorStore').directive('marcoTopSidebar', function($cookies){
             }, function(v){
                 $scope.basket = v;
             });
+
+            $scope.search = '';
+            $scope.findProducts = function(){
+                $location.url('/search?lookup=' + $scope.search);
+                $scope.search = '';
+            }
         }
     }
 });
+
+
 
 
 

@@ -3,7 +3,7 @@
 angular.module('MirrorStore.card', ['ngRoute'])
 
     .config(['$routeProvider', function($routeProvider) {
-        $routeProvider.when('/c/:category/:product', {
+        $routeProvider.when('/:parent_category/:category/:product', {
             templateUrl: 'card/card.html',
             controller: 'cardCtrl'
         });

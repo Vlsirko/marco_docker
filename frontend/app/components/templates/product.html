@@ -1,7 +1,7 @@
 <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
 
-    <a href="#/c/{{product.category.url}}/{{product.url}}" class="thumbnail product-card hover-shadow">
-        <marco-image class='marco-image img-responsive full-width' height="320" width="240" source="{{product.title_image}}" alt="{{product.title}}"></marco-image>
+    <a href="#/{{::product.category.parent.url}}/{{::product.category.url}}/{{::product.url}}" class="thumbnail product-card hover-shadow">
+        <marco-image class='marco-image img-responsive full-width' height="320" width="240" source="{{::product.title_image}}" alt="{{::product.title}}"></marco-image>
 
         <div class="status-block">
             <span ng-if="product.is_new" class="label label-success">Новинка</span>
@@ -10,8 +10,8 @@
         </div>
 
         <div class="caption">
-            <h4 class="pull-right">{{product.price}} грн</h4>
-            <h5>{{product.title}}</h5>
+            <h4 class="pull-right">{{::product.price}} грн</h4>
+            <h5>{{::product.title}}</h5>
         </div>
 
     </a>

@@ -1,7 +1,7 @@
 <nav>
     <ul class="pagination">
         <li ng-repeat="page in pages track by $index" ng-class="page == currPage ? 'active' : ''" >
-            <a scroll-on-click ng-click="page != '...' ? changePage(page) : ''">{{page}}</a>
+            <a scroll-on-click ng-click="page != '...' ? changePage(page) : ''">{{::page}}</a>
         </li>
     </ul>
 </nav>
