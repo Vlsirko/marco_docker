@@ -16,6 +16,7 @@
             </div>
             <div class="col-md-12">
                 <span>Наличие: {{product.is_preorder? 'нет' : 'есть'}}  в наличии</span>
+                <span ng-show="product.pieces_left > 0">Осталось: {{::product.pieces_left}} шт.</span>
                 <span class='price'>Цена: {{::product.price}} грн</span>
             </div>
 
@@ -53,4 +54,4 @@
     <span class="h3">Изображения товара:</span>
     <marco-image ng-repeat="image in product.gallery" class='marco-image img-responsive' height="640" width="480" source="{{::image.path}}" alt="{{::image.title}}"></marco-image>
 </div>
-<div class="col-md-9" ng-bind="description"></div>
+<div class="col-md-9" ng-bind-html="description"></div>

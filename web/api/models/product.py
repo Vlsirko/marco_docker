@@ -11,7 +11,7 @@ from .seo_block import SeoBlock
 
 class Product(models.Model):
     id = models.AutoField(primary_key=True)
-    title = models.CharField(max_length=255, verbose_name='Название')
+    title = models.CharField(max_length=255, verbose_name='Название', db_index=True)
     url = models.CharField(max_length=255, verbose_name='Транслитерация', unique=True)
     category = TreeForeignKey(Category, related_name='category', on_delete=models.SET_NULL,
                               null=True, verbose_name='Категория')
@@ -29,6 +29,7 @@ class Product(models.Model):
     is_new = models.BooleanField(verbose_name='Новинка')
     is_preorder = models.BooleanField(verbose_name='Предзаказ')
     is_sale = models.BooleanField(verbose_name='Отображать акции')
+    pieces_left = models.IntegerField(verbose_name='Штук осталось', null=True, blank=True)
 
     def __str__(self):
         return self.title

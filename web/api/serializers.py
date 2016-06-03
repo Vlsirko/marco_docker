@@ -66,7 +66,9 @@ class ProductSerializer(serializers.ModelSerializer):
                   'is_sale',
                   'is_preorder',
                   'sales',
-                  'seo_block')
+                  'seo_block',
+                  'pieces_left'
+                  )
 
 
 class UserSerializer(serializers.ModelSerializer):

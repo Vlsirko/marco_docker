@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'mptt',
     'django_mptt_admin',
     'rest_framework',
-    'dbbackup'
+    'dbbackup',
+    'rest_framework_word_filter'
 ]
 
 MIDDLEWARE_CLASSES = [

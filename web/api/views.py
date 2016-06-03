@@ -9,6 +9,7 @@ from api.models.order import Order
 from api.models.user import User
 from django.core.mail import send_mail
 from smtplib import SMTPException
+from rest_framework_word_filter import FullWordSearchFilter
 
 
 # Create your views here.
@@ -17,11 +18,11 @@ class ProductViewSet(viewsets.ModelViewSet):
     serializer_class = ProductSerializer
     pagination_class = ProductListPagination
     http_method_names = ['get']
-    filter_backends = (filters.DjangoFilterBackend, filters.OrderingFilter, filters.SearchFilter)
+    filter_backends = (filters.DjangoFilterBackend, filters.OrderingFilter, FullWordSearchFilter)
     filter_class = ProductFilter
     ordering_fields = ('time_add', 'price', 'is_preorder', 'title')
     lookup_field = 'url'
-    search_fields = ('title',)
+    word_fields = ('title',)
 
 
 class SliderViewSet(viewsets.ModelViewSet):
